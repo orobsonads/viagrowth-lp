@@ -13,8 +13,8 @@
     :root {
       --navy:    #0A1628;
       --navy2:   #132035;
-      --teal:    #16A34A;
-      --teal2:   #15803D;
+      --teal:    #00C2FF;
+      --teal2:   #0099CC;
       --light:   #F7F8FA;
       --white:   #FFFFFF;
       --gray:    #6B7280;
@@ -79,7 +79,7 @@
       align-items: center;
       gap: 6px;
       background: var(--teal);
-      color: var(--white);
+      color: var(--navy);
       font-weight: 700;
       font-size: 0.92rem;
       padding: 12px 24px;
@@ -109,7 +109,7 @@
     /* ─── TAG ──────────────────────────────────────── */
     .tag {
       display: inline-block;
-      background: rgba(22,163,74,0.10);
+      background: rgba(0,194,255,0.10);
       color: var(--teal2);
       font-size: 0.78rem;
       font-weight: 700;
@@ -123,7 +123,7 @@
     /* ─── HERO ─────────────────────────────────────── */
     .hero {
       background: var(--navy);
-      color: var(--white);
+      color: var(--navy);
       padding: 100px 0 90px;
       text-align: center;
       overflow: hidden;
@@ -134,12 +134,12 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(22,163,74,0.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,194,255,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero .tag {
-      background: rgba(22,163,74,0.15);
+      background: rgba(0,194,255,0.15);
       color: var(--teal);
     }
 
@@ -386,15 +386,12 @@
     }
 
     .pillar-icon {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      background: rgba(10,191,163,0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      margin-top: 8px;
     }
 
     .pillar-item-text strong {
@@ -607,12 +604,12 @@
     /* ─── CTA FINAL ────────────────────────────────── */
     .cta-section {
       background: var(--navy);
-      color: var(--white);
+      color: var(--navy);
       padding: 96px 0;
     }
 
     .cta-section .tag {
-      background: rgba(22,163,74,0.15);
+      background: rgba(0,194,255,0.15);
       color: var(--teal);
     }
 
@@ -624,7 +621,7 @@
     }
 
     .cta-left h2 {
-      color: var(--white);
+      color: var(--navy);
       margin-bottom: 16px;
     }
 
@@ -875,42 +872,42 @@
           <div class="pillar-body">
             <div class="pillar-items">
               <div class="pillar-item">
-                <div class="pillar-icon">🎯</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Tráfego pago estratégico</strong>
                   <span>Meta Ads e Google Ads segmentados para o perfil exato do cliente imobiliário na sua cidade.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">🎨</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Identidade visual completa</strong>
                   <span>Branding do escritório, paleta, tipografia e materiais para transmitir confiança antes da primeira palavra.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">📅</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Calendário e linha editorial</strong>
                   <span>Planejamento estratégico mensal com temas, formatos e frequência definidos. Você nunca fica sem o que postar.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">✍️</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Conteúdo de autoridade</strong>
                   <span>Posts, reels e artigos que posicionam você como referência no nicho imobiliário jurídico.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">🔍</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>SEO local</strong>
                   <span>Sua aparição orgânica em buscas como "advogado imobiliário em [cidade]" sem depender só de anúncios.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">📍</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Google Meu Negócio gerenciado</strong>
                   <span>Ficha otimizada, categorias certas, fotos, respostas a avaliações e postagens regulares. Você no Maps antes de qualquer concorrente.</span>
@@ -936,35 +933,35 @@
           <div class="pillar-body">
             <div class="pillar-items">
               <div class="pillar-item">
-                <div class="pillar-icon">🗂️</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>CRM configurado para advocacia</strong>
                   <span>Pipeline claro do lead ao cliente fechado, com etapas, responsáveis e histórico de cada contato.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">📋</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Scripts de vendas jurídicos</strong>
                   <span>Criados especificamente para consultas imobiliárias. Como qualificar, contornar objeções e conduzir ao fechamento.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">🤖</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Agentes SDR</strong>
                   <span>Atendimento automatizado inteligente que responde, qualifica e agenda 24h por dia, 7 dias por semana, sem perder nenhum lead.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">💬</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Fluxos de nutrição</strong>
                   <span>E-mail, WhatsApp e remarketing para leads que ainda não estão prontos. Quando decidirem, você é a escolha natural.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">🔔</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Gestão de follow-up</strong>
                   <span>Nenhum contato esquecido. Nenhuma oportunidade desperdiçada. Cada lead trabalhado até a decisão final.</span>
@@ -990,28 +987,28 @@
           <div class="pillar-body">
             <div class="pillar-items">
               <div class="pillar-item">
-                <div class="pillar-icon">📈</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Otimização de conversão contínua</strong>
                   <span>Testamos, ajustamos e melhoramos a cada ciclo. O que funciona é escalado. O que não funciona é corrigido.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">📊</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Relatórios de performance claros</strong>
                   <span>Custo por lead, taxa de conversão, ROI por canal. Você sabe exatamente onde cada real está trabalhando.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">🗓️</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Reuniões de estratégia mensais</strong>
                   <span>Revisamos o que está funcionando, escalamos o que converte e ajustamos o que precisa de atenção.</span>
                 </div>
               </div>
               <div class="pillar-item">
-                <div class="pillar-icon">🎯</div>
+                <div class="pillar-icon"></div>
                 <div class="pillar-item-text">
                   <strong>Crescimento previsível</strong>
                   <span>Metas reais, não promessas vazias. Seu escritório com uma máquina de aquisição que funciona todos os meses.</span>
@@ -1193,36 +1190,45 @@
         <div class="form-card">
           <h3>Fale com a VIA Growth</h3>
           <p>Sem spam. Só uma conversa honesta sobre o seu crescimento.</p>
-          <form onsubmit="return false;">
+          <form id="lead-form" onsubmit="submitForm(event)">
             <div class="form-group">
               <label>Nome completo</label>
-              <input type="text" placeholder="Dr. João Silva" />
+              <input id="f-nome" type="text" placeholder="Dr. João Silva" required />
             </div>
             <div class="form-group">
               <label>E-mail profissional</label>
-              <input type="email" placeholder="joao@escritorio.com.br" />
+              <input id="f-email" type="email" placeholder="joao@escritorio.com.br" required />
             </div>
             <div class="form-group">
               <label>WhatsApp</label>
-              <input type="tel" placeholder="(11) 99999-9999" />
+              <input id="f-whatsapp" type="tel" placeholder="(11) 99999-9999" required />
             </div>
             <div class="form-group">
               <label>Cidade e Estado</label>
-              <input type="text" placeholder="São Paulo, SP" />
+              <input id="f-cidade" type="text" placeholder="São Paulo, SP" required />
             </div>
             <div class="form-group">
               <label>Área de atuação principal</label>
-              <select>
+              <select id="f-area" required>
                 <option value="" disabled selected>Selecione...</option>
-                <option>Regularização de imóveis</option>
+                <option>Compra e Venda de Imóveis</option>
                 <option>Usucapião</option>
-                <option>Inventário</option>
-                <option>Contratos imobiliários</option>
-                <option>Distrato</option>
+                <option>Regularização de Imóveis</option>
+                <option>Inventário e Partilha</option>
+                <option>Locação e Despejo</option>
+                <option>Ações Possessórias</option>
+                <option>Distrato Imobiliário</option>
+                <option>Contratos Imobiliários</option>
+                <option>Incorporação e Loteamento</option>
+                <option>Financiamento Imobiliário</option>
+                <option>Condomínio</option>
                 <option>Outro</option>
               </select>
             </div>
-            <button class="btn btn-lg btn-form">Quero atrair clientes todo mês →</button>
+            <button type="submit" class="btn btn-lg btn-form" id="btn-submit">Quero atrair clientes todo mês →</button>
+            <div id="form-success" style="display:none;text-align:center;padding:16px;background:rgba(0,194,255,0.1);border-radius:8px;color:#00C2FF;font-weight:600;margin-top:8px;">
+              Recebemos seu contato! Nossa equipe retorna em até 48h.
+            </div>
             <p class="form-micro">Seus dados estão seguros e não serão compartilhados.</p>
           </form>
         </div>
@@ -1237,6 +1243,39 @@
 
   <!-- ═══════════════════════════════════════════════ JS -->
   <script>
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbywrOfKV0Hrzab2fRqAHJvFG5PqvA-C4EhZUHP1KIDw4AiSeHQXaCt9JsJMxI0d6akPzA/exec';
+
+    async function submitForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btn-submit');
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      const data = {
+        nome:     document.getElementById('f-nome').value,
+        email:    document.getElementById('f-email').value,
+        whatsapp: document.getElementById('f-whatsapp').value,
+        cidade:   document.getElementById('f-cidade').value,
+        area:     document.getElementById('f-area').value,
+        data:     new Date().toLocaleString('pt-BR')
+      };
+
+      try {
+        await fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        document.getElementById('lead-form').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } catch(err) {
+        btn.textContent = 'Quero atrair clientes todo mês →';
+        btn.disabled = false;
+        alert('Erro ao enviar. Tente novamente.');
+      }
+    }
+
     function togglePillar(id) {
       const el = document.getElementById(id);
       el.classList.toggle('open');
