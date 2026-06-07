@@ -3,623 +3,839 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIA Growth — Tráfego Pago e Aquisição de Clientes para Negócios</title>
-  <meta name="description" content="A VIA Growth transforma negócios em máquinas de aquisição de clientes previsíveis, com leads qualificados chegando todo mês e vendas fechadas com consistência." />
+  <title>VIA Growth, aquisição de clientes com previsibilidade.</title>
+  <meta name="description" content="Negócios que crescem com método, não com sorte. Leads qualificados todo mês, processo comercial estruturado e previsibilidade real." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    /* ─── RESET & BASE ─────────────────────────────── */
+    /* ─── RESET ────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --navy:    #0A1628;
-      --navy2:   #132035;
-      --teal:    #00C2FF;
-      --teal2:   #0099CC;
-      --light:   #F7F8FA;
-      --white:   #FFFFFF;
-      --gray:    #6B7280;
-      --gray2:   #9CA3AF;
-      --border:  #E5E7EB;
-      --text:    #111827;
-      --radius:  12px;
-      --shadow:  0 4px 24px rgba(10,22,40,0.08);
+      --paper:      #FBFBFD;
+      --paper-alt:  #F5F5F7;
+      --ink:        #1D1D1F;
+      --ink-pure:   #000000;
+      --gray:       #6E6E73;
+      --gray-soft:  #86868B;
+      --border:     #D2D2D7;
+      --border-soft:#E8E8ED;
+      --accent:     #FF5A1F;
+      --accent-soft:#FFF1EB;
     }
-    html { scroll-behavior: smooth; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: -0.011em;
+      overflow-x: hidden;
     }
+    img { max-width: 100%; height: auto; display: block; }
+
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
     }
+
+    /* ─── TYPOGRAPHY ───────────────────────────────── */
+    .display {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+    h1 {
+      font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+    h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .accent { color: var(--accent); }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
     /* ─── NAV ──────────────────────────────────────── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(251, 251, 253, 0.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
     .nav-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
-      height: 68px;
+      padding: 0 32px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .logo {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--ink);
       text-decoration: none;
       text-transform: uppercase;
     }
-    .logo .via { letter-spacing: 6px; }
-    .logo .growth { font-size: 0.62rem; display: block; letter-spacing: 5px; color: var(--gray); margin-top: -3px; font-weight: 400; }
+    .logo span { color: var(--accent); }
+
+    /* ─── BUTTONS (Apple pill) ─────────────────────── */
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
-      background: var(--teal);
-      color: var(--navy);
-      font-weight: 700;
-      font-size: 0.92rem;
-      padding: 12px 24px;
-      border-radius: 8px;
+      background: var(--ink);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 12px 22px;
+      border-radius: 980px;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
+      transition: all 0.2s ease;
+      letter-spacing: -0.01em;
     }
-    .btn:hover { background: var(--teal2); transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--teal);
-      color: var(--teal);
-    }
-    .btn-outline:hover { background: var(--teal); color: var(--white); }
+    .btn:hover { background: var(--accent); transform: translateY(-1px); }
     .btn-lg {
-      font-size: 1rem;
-      padding: 16px 36px;
-      border-radius: 10px;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+      font-weight: 500;
     }
-    /* ─── TAG ──────────────────────────────────────── */
-    .tag {
-      display: inline-block;
-      background: rgba(0,194,255,0.10);
-      color: var(--teal2);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 20px;
+    .btn-accent {
+      background: var(--accent);
+      color: white;
     }
+    .btn-accent:hover { background: var(--ink); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--ink); color: white; border-color: var(--ink); transform: none; }
+    .btn-light {
+      background: white;
+      color: var(--ink);
+    }
+    .btn-light:hover { background: var(--accent); color: white; }
+
     /* ─── HERO ─────────────────────────────────────── */
     .hero {
-      background: var(--navy);
-      color: var(--white);
-      padding: 100px 0 90px;
+      padding: 160px 0 100px;
       text-align: center;
-      overflow: hidden;
+      background: var(--paper);
       position: relative;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,194,255,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero .tag {
-      background: rgba(0,194,255,0.15);
-      color: var(--teal);
+      overflow: hidden;
     }
     .hero h1 {
-      color: var(--white);
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.18;
-      letter-spacing: -1px;
-      max-width: 820px;
-      margin: 0 auto 24px;
+      max-width: 900px;
+      margin: 0 auto 32px;
     }
-    .hero h1 em {
-      color: var(--teal);
-      font-style: normal;
+    .hero-sub {
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      color: var(--gray);
+      max-width: 620px;
+      margin: 0 auto 48px;
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: -0.015em;
     }
-    .hero p {
-      font-size: 1.12rem;
-      color: rgba(255,255,255,0.72);
-      max-width: 580px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-    }
-    .hero-cta-group {
+    .hero-actions {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
     .hero-micro {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.3px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-soft);
+      margin-top: 24px;
     }
+
+    /* ─── TICKER ───────────────────────────────────── */
+    .ticker {
+      margin-top: 100px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-flex;
+      gap: 48px;
+      animation: scroll 40s linear infinite;
+      padding-left: 48px;
+    }
+    .ticker-inner span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .ticker-inner .dot { color: var(--accent); }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION BASE ─────────────────────────────── */
+    section { padding: 140px 0; }
+    section.bg-alt { background: var(--paper-alt); }
+    .section-header {
+      text-align: center;
+      margin-bottom: 96px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-sub {
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      color: var(--gray);
+      max-width: 600px;
+      margin: 28px auto 0;
+      line-height: 1.55;
+      font-weight: 400;
+      letter-spacing: -0.012em;
+    }
+
     /* ─── STATS BAR ────────────────────────────────── */
-    .stats-bar {
-      background: var(--navy2);
-      padding: 40px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    .stats {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
     }
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      gap: 48px;
     }
     .stat-item {
-      text-align: center;
-      padding: 8px 16px;
-      border-right: 1px solid rgba(255,255,255,0.08);
+      text-align: left;
     }
-    .stat-item:last-child { border-right: none; }
     .stat-number {
       display: block;
-      font-size: 2.2rem;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       font-weight: 800;
-      color: var(--teal);
-      letter-spacing: -1px;
+      color: var(--ink);
+      letter-spacing: -0.045em;
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 14px;
     }
     .stat-label {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.3px;
-    }
-    /* ─── SECTION BASE ─────────────────────────────── */
-    section { padding: 96px 0; }
-    section.bg-light { background: var(--light); }
-    .section-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 800;
-      line-height: 1.22;
-      letter-spacing: -0.7px;
-      color: var(--navy);
-    }
-    h2 em {
-      color: var(--teal);
-      font-style: normal;
-    }
-    .section-sub {
-      font-size: 1.05rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--gray);
-      max-width: 560px;
-      margin: 16px auto 0;
-      line-height: 1.7;
     }
-    /* ─── MARKET SECTION ───────────────────────────── */
-    .market-intro {
-      max-width: 680px;
-      margin: 0 auto 56px;
-      text-align: center;
-    }
-    .market-intro p {
-      font-size: 1.05rem;
-      color: var(--gray);
-      line-height: 1.75;
-    }
+
+    /* ─── MERCADO CARDS ────────────────────────────── */
     .data-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 32px;
     }
     .data-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 28px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--paper);
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
+      padding: 48px 36px;
+      transition: all 0.3s ease;
     }
     .data-card:hover {
+      border-color: var(--ink);
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(10,22,40,0.12);
+    }
+    .data-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-soft);
+      margin-bottom: 32px;
+      display: block;
     }
     .data-card-number {
-      font-size: 2.4rem;
+      font-size: clamp(3rem, 5vw, 4.2rem);
       font-weight: 800;
-      color: var(--teal);
-      letter-spacing: -1px;
+      color: var(--ink);
+      letter-spacing: -0.045em;
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
     .data-card h3 {
-      font-size: 1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
     }
     .data-card p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--gray);
-      line-height: 1.65;
+      line-height: 1.55;
     }
+
     /* ─── VIA METHODOLOGY ──────────────────────────── */
     .via-pillars {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 1px;
+      background: var(--border-soft);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
     }
     .pillar {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: var(--paper-alt);
       overflow: hidden;
-      box-shadow: var(--shadow);
     }
     .pillar-header {
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 32px 36px;
+      gap: 32px;
+      padding: 48px 8px;
       cursor: pointer;
       user-select: none;
+      transition: background 0.2s;
+    }
+    .pillar-header:hover { background: rgba(0,0,0,0.02); }
+    .pillar-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--gray-soft);
+      min-width: 40px;
     }
     .pillar-letter {
-      width: 64px;
-      height: 64px;
-      min-width: 64px;
-      background: var(--navy);
-      color: var(--teal);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: -1px;
+      font-size: clamp(2.6rem, 4vw, 3.4rem);
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      min-width: 72px;
     }
     .pillar-title-group { flex: 1; }
     .pillar-name {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.4px;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 6px;
     }
     .pillar-subtitle {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--gray);
-      margin-top: 3px;
-      font-style: italic;
+      letter-spacing: -0.012em;
     }
     .pillar-arrow {
-      font-size: 1.4rem;
-      color: var(--teal);
+      font-size: 1.6rem;
+      color: var(--gray);
       transition: transform 0.3s;
+      font-weight: 300;
     }
-    .pillar.open .pillar-arrow { transform: rotate(180deg); }
+    .pillar.open .pillar-arrow { transform: rotate(180deg); color: var(--accent); }
     .pillar-body {
-      display: none;
-      padding: 0 36px 36px;
-      border-top: 1px solid var(--border);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
     }
-    .pillar.open .pillar-body { display: block; }
+    .pillar.open .pillar-body { max-height: 800px; }
+    .pillar-body-inner {
+      padding: 0 8px 56px;
+    }
     .pillar-items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 28px;
-      margin-bottom: 28px;
+      gap: 32px;
+      margin: 12px 0 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
     }
     .pillar-item {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       align-items: flex-start;
     }
-    .pillar-icon {
-      width: 8px;
-      height: 8px;
-      min-width: 8px;
-      background: var(--teal);
-      border-radius: 50%;
-      margin-top: 8px;
+    .pillar-item-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-top: 4px;
+      min-width: 24px;
     }
     .pillar-item-text strong {
       display: block;
-      font-size: 0.92rem;
+      font-size: 1rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 3px;
+      color: var(--ink);
+      margin-bottom: 6px;
+      letter-spacing: -0.015em;
     }
     .pillar-item-text span {
-      font-size: 0.85rem;
+      font-size: 0.92rem;
       color: var(--gray);
       line-height: 1.55;
     }
     .pillar-quote {
-      background: var(--light);
-      border-left: 3px solid var(--teal);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      font-size: 0.95rem;
-      color: var(--navy2);
-      font-style: italic;
-      line-height: 1.6;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      padding-left: 24px;
+      border-left: 2px solid var(--accent);
+      max-width: 720px;
     }
+
     .via-anchor {
-      margin-top: 56px;
-      background: var(--navy);
-      border-radius: var(--radius);
-      padding: 40px 48px;
+      margin-top: 96px;
       text-align: center;
     }
     .via-anchor p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.7;
-      max-width: 680px;
-      margin: 0 auto 28px;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      color: var(--ink);
+      line-height: 1.35;
+      max-width: 780px;
+      margin: 0 auto 40px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
     }
-    .via-anchor p strong { color: var(--teal); }
+    .via-anchor p .accent { color: var(--accent); }
+
     /* ─── RESULTADOS ───────────────────────────────── */
     .results-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
+      gap: 0;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
     }
     .result-card {
-      text-align: center;
-      padding: 48px 24px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      padding: 80px 40px;
+      border-right: 1px solid var(--border-soft);
+      text-align: left;
+    }
+    .result-card:last-child { border-right: none; }
+    .result-label-top {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-soft);
+      margin-bottom: 32px;
+      display: block;
     }
     .result-number {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--navy);
-      letter-spacing: -1px;
-      line-height: 1.2;
-      margin-bottom: 12px;
+      font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 24px;
     }
-    .result-number span { color: var(--teal); }
+    .result-number .accent { color: var(--accent); }
     .result-label {
-      font-size: 0.9rem;
+      font-size: 0.98rem;
       color: var(--gray);
-      line-height: 1.5;
+      line-height: 1.55;
     }
+    .result-label strong { color: var(--ink); font-weight: 600; }
     .results-footnote {
       text-align: center;
-      font-size: 0.88rem;
-      color: var(--gray2);
-      font-style: italic;
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.6;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-soft);
+      max-width: 600px;
+      margin: 56px auto 0;
+      line-height: 1.8;
     }
+
     /* ─── BIO ──────────────────────────────────────── */
     .bio-wrapper {
       display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 64px;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
       align-items: center;
     }
-    .bio-tag { margin-bottom: 16px; }
     .bio-name {
-      font-size: 2rem;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.5px;
-      margin-bottom: 20px;
+      color: var(--ink);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 32px;
     }
     .bio-text {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--gray);
-      line-height: 1.75;
-      margin-bottom: 16px;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      letter-spacing: -0.011em;
     }
     .bio-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 28px;
+      margin-top: 36px;
     }
     .badge {
-      background: var(--light);
+      background: transparent;
       border: 1px solid var(--border);
-      color: var(--navy);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 6px 14px;
+      color: var(--ink);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 14px;
       border-radius: 100px;
     }
     .bio-image-wrap {
-      border-radius: var(--radius);
+      border-radius: 24px;
       overflow: hidden;
-      background: var(--navy);
-      aspect-ratio: 3/4;
+      background: var(--paper-alt);
+      aspect-ratio: 4/5;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+    .bio-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
     .bio-image-placeholder {
       text-align: center;
-      color: rgba(255,255,255,0.3);
+      color: var(--gray-soft);
       font-size: 0.85rem;
       padding: 32px;
     }
-    .bio-image-placeholder svg {
-      display: block;
-      margin: 0 auto 12px;
-      opacity: 0.4;
-    }
+
     /* ─── FAQ ──────────────────────────────────────── */
     .faq-list {
-      max-width: 720px;
+      max-width: 820px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
     }
     .faq-item {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--white);
+      border-bottom: 1px solid var(--border-soft);
     }
+    .faq-item:first-child { border-top: 1px solid var(--border-soft); }
     .faq-question {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 22px 24px;
+      gap: 24px;
+      padding: 32px 0;
       background: none;
       border: none;
       cursor: pointer;
       text-align: left;
-      font-size: 0.98rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
       font-weight: 600;
-      color: var(--navy);
-      transition: background 0.15s;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      transition: color 0.2s;
     }
-    .faq-question:hover { background: var(--light); }
+    .faq-question-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex: 1;
+    }
+    .faq-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--gray-soft);
+      min-width: 32px;
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-question:hover .faq-num { color: var(--accent); }
     .faq-chevron {
-      font-size: 1.1rem;
-      color: var(--teal);
-      transition: transform 0.3s;
-      min-width: 20px;
-    }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-answer {
-      display: none;
-      padding: 0 24px 22px;
-      font-size: 0.93rem;
+      font-size: 1.4rem;
       color: var(--gray);
-      line-height: 1.7;
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
+      transition: transform 0.3s, color 0.2s;
+      font-weight: 300;
     }
-    .faq-item.open .faq-answer { display: block; }
-    /* ─── CTA FINAL ────────────────────────────────── */
+    .faq-item.open .faq-chevron { transform: rotate(45deg); color: var(--accent); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.65;
+      letter-spacing: -0.011em;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding: 0 56px 32px;
+    }
+
+    /* ─── CTA SECTION ──────────────────────────────── */
     .cta-section {
-      background: var(--navy);
-      color: var(--white);
-      padding: 96px 0;
+      background: var(--ink);
+      color: white;
+      padding: 140px 0;
     }
-    .cta-section .tag {
-      background: rgba(0,194,255,0.15);
-      color: var(--teal);
-    }
+    .cta-section .eyebrow { color: var(--accent); }
     .cta-inner {
       display: grid;
-      grid-template-columns: 1fr 480px;
-      gap: 80px;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
       align-items: start;
     }
     .cta-left h2 {
-      color: var(--white);
-      margin-bottom: 16px;
+      color: white;
+      margin-bottom: 28px;
     }
-    .cta-left h2 em { color: var(--teal); }
+    .cta-left h2 .accent { color: var(--accent); }
     .cta-left p {
-      color: rgba(255,255,255,0.6);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 32px;
+      color: rgba(255,255,255,0.65);
+      font-size: 1.15rem;
+      line-height: 1.55;
+      margin-bottom: 48px;
+      letter-spacing: -0.015em;
     }
     .trust-items {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 18px;
     }
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.65);
+      gap: 14px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
     }
-    .trust-dot {
-      width: 8px;
-      height: 8px;
-      min-width: 8px;
-      background: var(--teal);
+    .trust-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      background: var(--accent);
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
     }
+
+    /* ─── WHATSAPP CARD ────────────────────────────── */
+    .whatsapp-card {
+      background: white;
+      border-radius: 24px;
+      padding: 56px 44px;
+      text-align: center;
+    }
+    .whatsapp-icon {
+      width: 84px;
+      height: 84px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      color: white;
+    }
+    .whatsapp-card h3 {
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .whatsapp-desc {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 36px;
+      line-height: 1.55;
+      letter-spacing: -0.011em;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      background: #25D366;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 18px 28px;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      letter-spacing: -0.015em;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-whatsapp:hover {
+      background: #1FAD52;
+      transform: translateY(-2px);
+    }
+    .whatsapp-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-top: 24px;
+      display: block;
+    }
+    .whatsapp-micro {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-soft);
+      margin-top: 8px;
+    }
+
+    /* ─── FORM ─────────────────────────────────────── */
     .form-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 40px 36px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+      background: white;
+      border-radius: 24px;
+      padding: 48px 40px;
     }
     .form-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -0.025em;
     }
-    .form-card p {
-      font-size: 0.85rem;
+    .form-card .form-desc {
+      font-size: 0.95rem;
       color: var(--gray);
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .form-group label {
       display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
     }
     .form-group input,
     .form-group select {
       width: 100%;
-      padding: 12px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.93rem;
-      color: var(--text);
-      background: var(--white);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.98rem;
+      color: var(--ink);
+      background: white;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .form-group input:focus,
     .form-group select:focus {
-      border-color: var(--teal);
+      border-color: var(--ink);
+      box-shadow: 0 0 0 3px rgba(29,29,31,0.08);
     }
-    .form-group input::placeholder { color: var(--gray2); }
+    .form-group input::placeholder { color: var(--gray-soft); }
     .btn-form {
       width: 100%;
-      justify-content: center;
-      margin-top: 8px;
+      background: var(--ink);
+      color: white;
+      margin-top: 12px;
+      padding: 16px;
       font-size: 1rem;
-      padding: 15px;
     }
+    .btn-form:hover { background: var(--accent); }
     .form-micro {
       text-align: center;
-      font-size: 0.78rem;
-      color: var(--gray2);
-      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-soft);
+      margin-top: 16px;
     }
+
     /* ─── SUCCESS MESSAGE ──────────────────────────── */
     #form-success {
       display: none;
@@ -629,8 +845,8 @@
     .success-icon {
       width: 64px;
       height: 64px;
-      background: rgba(0, 194, 255, 0.1);
-      color: var(--teal);
+      background: var(--accent-soft);
+      color: var(--accent);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -639,189 +855,415 @@
       margin: 0 auto 24px;
     }
     #form-success h4 {
-      font-size: 1.4rem;
-      color: var(--navy);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
       margin-bottom: 12px;
+      letter-spacing: -0.025em;
     }
     #form-success p {
       color: var(--gray);
       font-size: 1rem;
       line-height: 1.6;
-      margin-bottom: 0;
     }
+
     /* ─── FOOTER ───────────────────────────────────── */
     footer {
-      background: #060E1B;
-      color: rgba(255,255,255,0.35);
+      background: var(--paper);
+      border-top: 1px solid var(--border-soft);
+      padding: 48px 24px;
       text-align: center;
-      padding: 28px 24px;
-      font-size: 0.82rem;
     }
-    footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
-    footer a:hover { color: var(--teal); }
+    footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-soft);
+    }
+    footer a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--accent); }
+
+    /* ─── DIVIDER ──────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border-soft);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     /* ─── RESPONSIVE ───────────────────────────────── */
-    @media (max-width: 900px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.08); }
-      .stat-item:nth-child(4) { border-right: none; border-top: 1px solid rgba(255,255,255,0.08); }
-      .data-cards { grid-template-columns: 1fr; }
-      .pillar-items { grid-template-columns: 1fr; }
-      .results-grid { grid-template-columns: 1fr; gap: 16px; }
-      .bio-wrapper { grid-template-columns: 1fr; }
-      .bio-image-wrap { max-width: 360px; margin: 0 auto; }
-      .cta-inner { grid-template-columns: 1fr; gap: 48px; }
-      .via-anchor { padding: 32px 24px; }
+
+    /* TABLET (1024px) */
+    @media (max-width: 1024px) {
+      section { padding: 112px 0; }
+      .hero { padding: 120px 0 80px; }
+      .container { padding: 0 28px; }
+      .nav-inner { padding: 0 28px; }
+      .cta-inner { gap: 64px; }
+      .bio-wrapper { gap: 64px; }
     }
-    @media (max-width: 600px) {
-      .nav-inner { height: 60px; }
-      .logo { font-size: 1.2rem; }
-      .btn { padding: 10px 18px; font-size: 0.85rem; }
-      section { padding: 64px 0; }
-      .pillar-header { padding: 24px; }
-      .pillar-body { padding: 0 24px 24px; }
-      .form-card { padding: 28px 20px; }
+
+    /* MOBILE GRANDE (768px) */
+    @media (max-width: 768px) {
+      section { padding: 88px 0; }
+      .container { padding: 0 22px; }
+      .nav-inner { padding: 0 22px; height: 62px; }
+
+      /* Permite que headlines de seção fluam naturalmente em mobile */
+      .section-header h2 br,
+      .via-anchor p br { display: none; }
+
+      /* Nav */
+      .logo { font-size: 0.95rem; letter-spacing: 0.12em; }
+      .btn { padding: 11px 18px; font-size: 0.88rem; }
+
+      /* Hero */
+      .hero { padding: 88px 0 56px; }
+      .hero h1 { font-size: clamp(2.2rem, 8vw, 3.4rem); }
+      .hero-sub { font-size: 1.05rem; margin-bottom: 36px; }
+      .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
+      .hero-actions .btn { width: 100%; }
+      .eyebrow { font-size: 0.68rem; margin-bottom: 22px; letter-spacing: 0.16em; }
+
+      /* Ticker */
+      .ticker { margin-top: 64px; padding: 18px 0; }
+      .ticker-inner { gap: 32px; padding-left: 32px; }
+      .ticker-inner span { font-size: 0.7rem; }
+
+      /* Stats */
+      .stats { padding: 56px 0; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+      .stat-number { font-size: 2.4rem; }
+      .stat-label { font-size: 0.66rem; }
+
+      /* Section headers */
+      .section-header { margin-bottom: 56px; }
+      h2 { font-size: clamp(1.9rem, 6.5vw, 2.6rem); }
+      .section-sub { font-size: 1rem; margin-top: 20px; }
+
+      /* Mercado cards */
+      .data-cards { grid-template-columns: 1fr; gap: 16px; }
+      .data-card { padding: 40px 28px; }
+      .data-card-number { font-size: 2.8rem; }
+      .data-card h3 { font-size: 1.05rem; }
+
+      /* Pilares VIA */
+      .pillar-header { padding: 32px 6px; gap: 18px; }
+      .pillar-letter { font-size: 2.2rem; min-width: 48px; }
+      .pillar-num { display: none; }
+      .pillar-name { font-size: 1.3rem; }
+      .pillar-subtitle { font-size: 0.88rem; }
+      .pillar-items { grid-template-columns: 1fr; gap: 22px; padding-top: 24px; margin-top: 8px; margin-bottom: 32px; }
+      .pillar-quote { font-size: 1rem; padding-left: 18px; }
+      .pillar-body-inner { padding: 0 6px 40px; }
+      .via-anchor { margin-top: 64px; }
+      .via-anchor p { font-size: 1.25rem; margin-bottom: 32px; }
+
+      /* Resultados */
+      .results-grid { grid-template-columns: 1fr; }
+      .result-card {
+        border-right: none;
+        border-bottom: 1px solid var(--border-soft);
+        padding: 56px 8px;
+      }
+      .result-card:last-child { border-bottom: none; }
+      .result-number { font-size: 3rem; margin-bottom: 18px; }
+      .results-footnote { margin-top: 40px; font-size: 0.65rem; }
+
+      /* Bio */
+      .bio-wrapper { grid-template-columns: 1fr; gap: 48px; }
+      .bio-name { font-size: 2.2rem; margin-bottom: 24px; }
+      .bio-text { font-size: 1rem; }
+      .bio-image-wrap { max-width: 360px; margin: 0 auto; aspect-ratio: 4/5; }
+      .bio-badges { gap: 8px; margin-top: 28px; }
+      .badge { font-size: 0.65rem; padding: 6px 12px; }
+
+      /* FAQ */
+      .faq-question { padding: 24px 0; font-size: 1rem; gap: 16px; }
+      .faq-question-left { gap: 16px; }
+      .faq-num { font-size: 0.66rem; min-width: 24px; letter-spacing: 0.12em; }
+      .faq-chevron { font-size: 1.2rem; }
+      .faq-item.open .faq-answer { padding: 0 0 24px 40px; font-size: 0.95rem; }
+
+      /* CTA */
+      .cta-section { padding: 88px 0; }
+      .cta-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cta-left h2 { margin-bottom: 22px; }
+      .cta-left p { font-size: 1.05rem; margin-bottom: 36px; }
+      .trust-item { font-size: 0.9rem; }
+
+      /* WhatsApp card */
+      .whatsapp-card { padding: 44px 28px; border-radius: 20px; }
+      .whatsapp-icon { width: 72px; height: 72px; margin-bottom: 26px; }
+      .whatsapp-icon svg { width: 36px; height: 36px; }
+      .whatsapp-desc { font-size: 0.95rem; margin-bottom: 28px; }
+      .btn-whatsapp { font-size: 1rem; padding: 16px 24px; }
+    }
+
+    /* MOBILE PEQUENO (480px) */
+    @media (max-width: 480px) {
+      section { padding: 72px 0; }
+      .container { padding: 0 18px; }
+      .nav-inner { padding: 0 18px; height: 58px; }
+
+      /* Nav compactado */
+      .logo { font-size: 0.85rem; letter-spacing: 0.1em; }
+      .btn { padding: 10px 14px; font-size: 0.8rem; }
+
+      /* Hero */
+      .hero { padding: 72px 0 48px; }
+      .hero h1 { font-size: clamp(1.95rem, 9vw, 2.6rem); }
+      .hero-sub { font-size: 1rem; margin-bottom: 32px; }
+      .hero-micro { font-size: 0.62rem; }
+
+      /* Stats compactado */
+      .stats { padding: 44px 0; }
+      .stats-grid { gap: 32px 16px; }
+      .stat-number { font-size: 2rem; }
+      .stat-label { font-size: 0.6rem; letter-spacing: 0.14em; }
+
+      /* Section headers */
+      h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); letter-spacing: -0.035em; }
+      .section-header { margin-bottom: 44px; }
+
+      /* Mercado */
+      .data-card { padding: 32px 22px; border-radius: 14px; }
+      .data-card-number { font-size: 2.4rem; }
+      .data-card-label { font-size: 0.62rem; margin-bottom: 22px; }
+
+      /* Pilares */
+      .pillar-header { padding: 24px 4px; gap: 14px; }
+      .pillar-letter { font-size: 1.9rem; min-width: 40px; }
+      .pillar-name { font-size: 1.15rem; }
+      .pillar-subtitle { font-size: 0.82rem; }
+      .pillar-arrow { font-size: 1.3rem; }
+      .pillar-items { gap: 18px; margin-bottom: 24px; }
+      .pillar-item-text strong { font-size: 0.95rem; }
+      .pillar-item-text span { font-size: 0.86rem; }
+      .pillar-quote { font-size: 0.95rem; padding-left: 14px; }
+      .via-anchor p { font-size: 1.1rem; }
+
+      /* Resultados */
+      .result-card { padding: 44px 4px; }
+      .result-number { font-size: 2.6rem; }
+      .result-label-top { font-size: 0.62rem; margin-bottom: 22px; }
+      .result-label { font-size: 0.92rem; }
+
+      /* Bio */
+      .bio-name { font-size: 1.95rem; }
+      .bio-text { font-size: 0.95rem; }
+      .bio-image-wrap { max-width: 100%; border-radius: 16px; }
+
+      /* FAQ */
+      .faq-question { padding: 20px 0; font-size: 0.95rem; gap: 12px; }
+      .faq-question-left { gap: 12px; }
+      .faq-num { min-width: 20px; }
+      .faq-item.open .faq-answer { padding: 0 0 22px 32px; font-size: 0.9rem; }
+
+      /* CTA */
+      .cta-section { padding: 72px 0; }
+      .cta-left p { font-size: 1rem; margin-bottom: 32px; }
+
+      /* WhatsApp card */
+      .whatsapp-card { padding: 36px 22px; border-radius: 16px; }
+      .whatsapp-icon { width: 64px; height: 64px; margin-bottom: 22px; }
+      .whatsapp-icon svg { width: 32px; height: 32px; }
+      .whatsapp-card h3 { font-size: 1.4rem; }
+      .whatsapp-desc { font-size: 0.92rem; margin-bottom: 24px; }
+      .btn-whatsapp { font-size: 0.95rem; padding: 15px 20px; gap: 10px; }
+      .whatsapp-number { font-size: 0.7rem; margin-top: 20px; }
+      .whatsapp-micro { font-size: 0.6rem; }
+
+      /* Footer */
+      footer { padding: 36px 18px; }
+      footer p { font-size: 0.62rem; letter-spacing: 0.12em; }
+    }
+
+    /* MOBILE EXTRA PEQUENO (360px) */
+    @media (max-width: 360px) {
+      .container { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
+      .logo { font-size: 0.78rem; }
+      .btn { padding: 9px 12px; font-size: 0.74rem; }
+      h2 { font-size: 1.65rem; }
+      .hero h1 { font-size: 1.9rem; }
+      .stat-number { font-size: 1.85rem; }
+      .data-card-number { font-size: 2.2rem; }
+      .result-number { font-size: 2.4rem; }
     }
   </style>
 </head>
 <body>
+
   <nav>
     <div class="nav-inner">
-      <a class="logo" href="#"><span class="via">V.I.A</span><span class="growth">Growth</span></a>
-      <a href="#form" class="btn">Quero mais clientes agora →</a>
+      <a class="logo" href="#">V<span>.</span>I<span>.</span>A Growth</a>
+      <a href="#form" class="btn">Falar com a VIA</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <span class="tag">Tráfego pago para negócios que querem crescer</span>
+      <div class="eyebrow">Aquisição com previsibilidade</div>
       <h1>
-        Seu negócio na frente de quem<br>
-        já está procurando pelo que você vende,<br>
-        <em>todo mês, com previsibilidade.</em>
+        Clientes todo mês.<br>
+        Por <span class="accent">método</span>, não por sorte.
       </h1>
-      <p>
-        A VIA Growth transforma negócios em máquinas de aquisição de clientes previsíveis,
-        com leads qualificados chegando todo mês, vendas fechadas com consistência
-        e previsibilidade financeira real.
+      <p class="hero-sub">
+        A VIA Growth transforma negócios em operações de aquisição previsíveis. Leads qualificados, processo comercial estruturado e crescimento que você consegue planejar.
       </p>
-      <div class="hero-cta-group">
-        <a href="#form" class="btn btn-lg">Quero atrair clientes todo mês →</a>
-        <span class="hero-micro">Processo estruturado e focado no seu mercado.</span>
+      <div class="hero-actions">
+        <a href="#form" class="btn btn-accent btn-lg">Quero crescer com método →</a>
+        <a href="#metodo" class="btn btn-ghost btn-lg">Ver metodologia</a>
+      </div>
+      <div class="hero-micro">Diagnóstico gratuito · Resposta em 48h</div>
+    </div>
+
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="ticker-inner">
+        <span>+32.000 leads qualificados</span><span class="dot">●</span>
+        <span>R$18M em vendas geradas</span><span class="dot">●</span>
+        <span>+25M de pessoas impactadas</span><span class="dot">●</span>
+        <span>Metodologia VIA</span><span class="dot">●</span>
+        <span>Atendimento 1 a 1</span><span class="dot">●</span>
+        <span>+32.000 leads qualificados</span><span class="dot">●</span>
+        <span>R$18M em vendas geradas</span><span class="dot">●</span>
+        <span>+25M de pessoas impactadas</span><span class="dot">●</span>
+        <span>Metodologia VIA</span><span class="dot">●</span>
+        <span>Atendimento 1 a 1</span><span class="dot">●</span>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
+  <!-- STATS -->
+  <div class="stats">
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number">100%</span>
-          <span class="stat-label">foco em resultado real</span>
+          <span class="stat-number">100<span class="accent">%</span></span>
+          <span class="stat-label">Foco em resultado real</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">360º</span>
-          <span class="stat-label">visão completa do funil de vendas</span>
+          <span class="stat-number">360<span class="accent">°</span></span>
+          <span class="stat-label">Visão completa do funil</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">1 a 1</span>
-          <span class="stat-label">acompanhamento estratégico</span>
+          <span class="stat-number">1:1</span>
+          <span class="stat-label">Acompanhamento estratégico</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">24/7</span>
-          <span class="stat-label">captação de leads ativa</span>
+          <span class="stat-label">Captação ativa</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- MERCADO / OPORTUNIDADE -->
+  <!-- MERCADO -->
   <section>
     <div class="container">
       <div class="section-header">
-        <span class="tag">A oportunidade que a maioria ignora</span>
-        <h2>Seus clientes estão online buscando<br><em>exatamente o que você oferece.</em></h2>
-      </div>
-      <div class="market-intro">
-        <p>
-          O Brasil tem mais de 170 milhões de usuários ativos na internet. A decisão de compra começa no digital — seja no Google, no Instagram ou no WhatsApp. O problema não é falta de demanda. É falta de visibilidade e de um processo claro para transformar interesse em venda.
+        <div class="eyebrow">A oportunidade</div>
+        <h2>
+          Seus clientes já estão online.<br>
+          <span class="accent">Procurando por você.</span>
+        </h2>
+        <p class="section-sub">
+          O Brasil tem 170 milhões de pessoas conectadas. A decisão de compra começa no digital. O problema nunca foi demanda, e sim visibilidade e processo.
         </p>
       </div>
+
       <div class="data-cards">
         <div class="data-card">
-          <div class="data-card-number">74%</div>
-          <h3>das decisões de compra começam online</h3>
-          <p>Antes de contratar qualquer serviço ou produto, o consumidor pesquisa. Estar presente nesse momento é o que separa quem cresce de quem depende só de indicação.</p>
+          <span class="data-card-label">[ 01 / Comportamento ]</span>
+          <div class="data-card-number">74<span class="accent">%</span></div>
+          <h3>das decisões de compra começam online.</h3>
+          <p>Antes de contratar qualquer serviço, o consumidor pesquisa. Estar presente nesse momento separa quem cresce de quem depende de indicação.</p>
         </div>
         <div class="data-card">
-          <div class="data-card-number">R$23bi</div>
-          <h3>investidos em publicidade digital no Brasil</h3>
-          <p>O mercado de tráfego pago cresce todo ano. Negócios que estruturam sua presença agora saem na frente antes que o custo de entrada suba ainda mais.</p>
+          <span class="data-card-label">[ 02 / Mercado ]</span>
+          <div class="data-card-number"><span class="accent">R$</span>23bi</div>
+          <h3>investidos em mídia digital no Brasil.</h3>
+          <p>O mercado de tráfego pago cresce todo ano. Quem estrutura presença agora sai na frente antes que o custo de entrada suba.</p>
         </div>
         <div class="data-card">
-          <div class="data-card-number">&lt;12%</div>
-          <h3>dos negócios têm estratégia de aquisição ativa</h3>
-          <p>A maioria ainda depende de indicação ou postura passiva. A janela para quem age com método está aberta — e a concorrência ainda não acordou.</p>
+          <span class="data-card-label">[ 03 / Concorrência ]</span>
+          <div class="data-card-number">&lt;12<span class="accent">%</span></div>
+          <h3>dos negócios têm aquisição ativa.</h3>
+          <p>A maioria ainda depende de indicação. A janela para quem age com método está aberta, e a concorrência ainda não acordou.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <div class="divider"></div>
+
   <!-- METODOLOGIA VIA -->
-  <section class="bg-light">
+  <section class="bg-alt" id="metodo">
     <div class="container">
       <div class="section-header">
-        <span class="tag">Como funciona</span>
-        <h2>A <em>Metodologia VIA.</em></h2>
-        <p class="section-sub">Não somos uma agência genérica. Estruturamos o posicionamento, a inteligência comercial e a aquisição, lado a lado com o seu negócio.</p>
+        <div class="eyebrow">Como funciona</div>
+        <h2>A Metodologia <span class="accent">V.I.A</span></h2>
+        <p class="section-sub">
+          Não somos uma agência genérica. Estruturamos posicionamento, inteligência comercial e aquisição lado a lado com o seu negócio.
+        </p>
       </div>
+
       <div class="via-pillars">
 
         <!-- V -->
         <div class="pillar open" id="pillar-v">
           <div class="pillar-header" onclick="togglePillar('pillar-v')">
+            <span class="pillar-num">01</span>
             <div class="pillar-letter">V</div>
             <div class="pillar-title-group">
               <div class="pillar-name">Visibilidade</div>
               <div class="pillar-subtitle">Você na frente do cliente certo, na hora certa.</div>
             </div>
-            <span class="pillar-arrow">▾</span>
+            <span class="pillar-arrow">+</span>
           </div>
           <div class="pillar-body">
-            <div class="pillar-items">
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Tráfego pago estratégico</strong>
-                  <span>Meta Ads e Google Ads segmentados para quem está buscando ativamente o que você oferece — na sua região ou em escala nacional.</span>
+            <div class="pillar-body-inner">
+              <div class="pillar-items">
+                <div class="pillar-item">
+                  <span class="pillar-item-num">01</span>
+                  <div class="pillar-item-text">
+                    <strong>Tráfego pago estratégico</strong>
+                    <span>Meta Ads e Google Ads segmentados para quem busca ativamente o que você oferece.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">02</span>
+                  <div class="pillar-item-text">
+                    <strong>Posicionamento de autoridade</strong>
+                    <span>Identidade e mensagem que transmitem credibilidade antes do primeiro contato.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">03</span>
+                  <div class="pillar-item-text">
+                    <strong>SEO e Google Meu Negócio</strong>
+                    <span>Otimização para que seu negócio seja a primeira opção em buscas locais.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">04</span>
+                  <div class="pillar-item-text">
+                    <strong>Estratégia de conteúdo</strong>
+                    <span>O que publicar para atrair o perfil certo e alimentar o funil de forma consistente.</span>
+                  </div>
                 </div>
               </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Posicionamento de Autoridade</strong>
-                  <span>Identidade visual e mensagem que transmitem credibilidade antes mesmo do primeiro contato, aumentando a taxa de conversão.</span>
-                </div>
+              <div class="pillar-quote">
+                "Antes de comprar, o cliente pesquisa. A Visibilidade garante que ele encontre você, e não o concorrente."
               </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>SEO e Google Meu Negócio</strong>
-                  <span>Otimização para que seu negócio seja a primeira opção quando pesquisarem pelo seu serviço ou produto na sua cidade.</span>
-                </div>
-              </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Estratégia de Conteúdo</strong>
-                  <span>Direcionamento sobre o que publicar para atrair o perfil certo de cliente, gerar autoridade e alimentar o funil de forma consistente.</span>
-                </div>
-              </div>
-            </div>
-            <div class="pillar-quote">
-              "Antes de comprar, o cliente pesquisa. A Visibilidade garante que ele encontre o seu negócio — e não o concorrente."
             </div>
           </div>
         </div>
@@ -829,46 +1271,49 @@
         <!-- I -->
         <div class="pillar" id="pillar-i">
           <div class="pillar-header" onclick="togglePillar('pillar-i')">
+            <span class="pillar-num">02</span>
             <div class="pillar-letter">I</div>
             <div class="pillar-title-group">
               <div class="pillar-name">Inteligência de Dados e Comercial</div>
               <div class="pillar-subtitle">Processos e dados para não perder nenhuma oportunidade.</div>
             </div>
-            <span class="pillar-arrow">▾</span>
+            <span class="pillar-arrow">+</span>
           </div>
           <div class="pillar-body">
-            <div class="pillar-items">
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Análise de Dados do Lead</strong>
-                  <span>Mapeamento contínuo das campanhas para entender qual perfil de cliente gera as vendas mais lucrativas e replicar esse resultado.</span>
+            <div class="pillar-body-inner">
+              <div class="pillar-items">
+                <div class="pillar-item">
+                  <span class="pillar-item-num">01</span>
+                  <div class="pillar-item-text">
+                    <strong>Análise de dados do lead</strong>
+                    <span>Mapeamento contínuo para identificar qual perfil gera as vendas mais lucrativas.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">02</span>
+                  <div class="pillar-item-text">
+                    <strong>CRM e funil estruturado</strong>
+                    <span>Processo comercial claro: primeiro contato, qualificação, proposta e fechamento.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">03</span>
+                  <div class="pillar-item-text">
+                    <strong>Scripts de atendimento</strong>
+                    <span>Roteiros validados para sua equipe qualificar leads e contornar objeções.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">04</span>
+                  <div class="pillar-item-text">
+                    <strong>Gestão de follow-up</strong>
+                    <span>Acompanhamento do lead que precisa de tempo, mantendo você no radar dele.</span>
+                  </div>
                 </div>
               </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>CRM e Funil Estruturado</strong>
-                  <span>Implementação de um processo comercial claro: do primeiro contato, qualificação e proposta até o fechamento da venda.</span>
-                </div>
+              <div class="pillar-quote">
+                "Gerar contatos é fácil. Difícil é ter o processo para transformar contato em venda."
               </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Scripts de Atendimento</strong>
-                  <span>Roteiros validados para que sua equipe qualifique o lead com agilidade, contornando objeções e avançando no funil mais rápido.</span>
-                </div>
-              </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Gestão Inteligente de Follow-up</strong>
-                  <span>Estratégias para acompanhar o lead que precisa de tempo para decidir, mantendo seu negócio no radar até o momento da compra.</span>
-                </div>
-              </div>
-            </div>
-            <div class="pillar-quote">
-              "Gerar contatos é fácil. Difícil é ter a inteligência e o processo interno para transformar esse contato em uma venda de verdade."
             </div>
           </div>
         </div>
@@ -876,57 +1321,61 @@
         <!-- A -->
         <div class="pillar" id="pillar-a">
           <div class="pillar-header" onclick="togglePillar('pillar-a')">
+            <span class="pillar-num">03</span>
             <div class="pillar-letter">A</div>
             <div class="pillar-title-group">
               <div class="pillar-name">Aquisição</div>
-              <div class="pillar-subtitle">O trabalho conjunto para fechar vendas com escala.</div>
+              <div class="pillar-subtitle">Trabalho conjunto para fechar vendas com escala.</div>
             </div>
-            <span class="pillar-arrow">▾</span>
+            <span class="pillar-arrow">+</span>
           </div>
           <div class="pillar-body">
-            <div class="pillar-items">
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Filtro de Qualificação Contínuo</strong>
-                  <span>Ajustamos as campanhas com base no seu feedback comercial para que cheguem apenas leads com real potencial de compra.</span>
+            <div class="pillar-body-inner">
+              <div class="pillar-items">
+                <div class="pillar-item">
+                  <span class="pillar-item-num">01</span>
+                  <div class="pillar-item-text">
+                    <strong>Filtro de qualificação contínuo</strong>
+                    <span>Ajustes nas campanhas com base no seu feedback comercial. Só leads com real potencial.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">02</span>
+                  <div class="pillar-item-text">
+                    <strong>Reuniões de alinhamento</strong>
+                    <span>Encontros mensais para analisar métricas, revisar atendimentos e propor melhorias.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">03</span>
+                  <div class="pillar-item-text">
+                    <strong>Relatórios de ROI transparentes</strong>
+                    <span>Quanto você investiu, quanto retornou em vendas. Sem métricas de vaidade.</span>
+                  </div>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-item-num">04</span>
+                  <div class="pillar-item-text">
+                    <strong>Previsibilidade financeira</strong>
+                    <span>Funil previsível rodando. Controle sobre o crescimento e o volume de novos clientes.</span>
+                  </div>
                 </div>
               </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Reuniões de Alinhamento e Mentoria</strong>
-                  <span>Encontros mensais para analisar as métricas do negócio, revisar atendimentos e propor melhorias diretas na taxa de conversão.</span>
-                </div>
+              <div class="pillar-quote">
+                "Nosso sucesso não é clique no anúncio. É a venda que você fecha no final do mês."
               </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Relatórios de ROI Transparentes</strong>
-                  <span>Mostramos exatamente quanto você investiu e quanto retornou em vendas fechadas — sem métricas de vaidade, só resultado real.</span>
-                </div>
-              </div>
-              <div class="pillar-item">
-                <div class="pillar-icon"></div>
-                <div class="pillar-item-text">
-                  <strong>Previsibilidade Financeira</strong>
-                  <span>Com um funil previsível rodando, seu negócio passa a ter controle sobre o crescimento financeiro e o volume de novos clientes.</span>
-                </div>
-              </div>
-            </div>
-            <div class="pillar-quote">
-              "Nosso sucesso não é o número de cliques no seu anúncio. Nosso sucesso é a venda que o seu negócio fecha no final do mês."
             </div>
           </div>
         </div>
 
       </div>
+
       <div class="via-anchor">
         <p>
-          <strong>A Metodologia VIA</strong> transforma negócios em operações de aquisição previsíveis,
-          cobrindo desde a captação do lead até a estruturação comercial para o fechamento da venda.
+          A Metodologia <span class="accent">V.I.A</span> cobre da captação do lead<br>
+          à venda fechada.
         </p>
-        <a href="#form" class="btn btn-lg">Quero conhecer a metodologia →</a>
+        <a href="#form" class="btn btn-accent btn-lg">Aplicar no meu negócio →</a>
       </div>
     </div>
   </section>
@@ -935,59 +1384,67 @@
   <section>
     <div class="container">
       <div class="section-header">
-        <span class="tag">Resultados Reais</span>
-        <h2>Negócios que pararam de depender<br><em>só de indicação.</em></h2>
+        <div class="eyebrow">Resultados reais</div>
+        <h2>
+          Negócios que pararam de depender<br>
+          <span class="accent">só de indicação.</span>
+        </h2>
       </div>
+
       <div class="results-grid">
         <div class="result-card">
-          <div class="result-number">+<span>8.400</span></div>
-          <div class="result-label"><strong>leads qualificados gerados</strong><br>em campanhas ativas para negócios que atendemos, com interesse real no serviço.</div>
+          <span class="result-label-top">[ 01 / Leads ]</span>
+          <div class="result-number"><span class="accent">+</span>32.000</div>
+          <p class="result-label"><strong>leads qualificados gerados</strong> em campanhas ativas, com interesse real no serviço.</p>
         </div>
         <div class="result-card">
-          <div class="result-number">R$<span>1,4M</span></div>
-          <div class="result-label"><strong>em faturamento gerado para clientes</strong><br>resultado direto das campanhas de aquisição estruturadas pela Metodologia VIA.</div>
+          <span class="result-label-top">[ 02 / Faturamento ]</span>
+          <div class="result-number"><span class="accent">R$</span>18M</div>
+          <p class="result-label"><strong>em vendas geradas</strong>, resultado direto das campanhas estruturadas pela Metodologia VIA.</p>
         </div>
         <div class="result-card">
-          <div class="result-number">+<span>3,2M</span></div>
-          <div class="result-label"><strong>pessoas impactadas</strong><br>gerando autoridade de marca, visibilidade e posicionamento de mercado para nossos clientes.</div>
+          <span class="result-label-top">[ 03 / Alcance ]</span>
+          <div class="result-number"><span class="accent">+</span>25M</div>
+          <p class="result-label"><strong>pessoas impactadas</strong>, gerando autoridade, visibilidade e posicionamento de mercado.</p>
         </div>
       </div>
+
       <p class="results-footnote">
         Números consolidados das contas ativas gerenciadas pela VIA Growth.<br>
-        Resultados podem variar conforme investimento, mercado e perfil do negócio.
+        Resultados podem variar conforme investimento, mercado e perfil.
       </p>
     </div>
   </section>
 
   <!-- BIO -->
-  <section class="bg-light">
+  <section class="bg-alt">
     <div class="container">
       <div class="bio-wrapper">
         <div>
-          <span class="tag bio-tag">Quem está por trás</span>
-          <h2 class="bio-name">Robson Silva,<br>fundador da VIA Growth.</h2>
+          <div class="eyebrow">Quem está por trás</div>
+          <h2 class="bio-name">Robson Silva.<br>Fundador.</h2>
           <p class="bio-text">
-            Atuei como gestor de performance em grandes grupos, liderando estratégias de aquisição de clientes em escala. Hoje, aplico essa experiência para negócios de diferentes segmentos que querem crescer com consistência e previsibilidade.
+            Atuei como gestor de performance em grandes grupos, liderando estratégias de aquisição em escala. Hoje aplico essa experiência para negócios que querem crescer com consistência.
           </p>
           <p class="bio-text">
-            Especialista em aquisição digital de alta performance, aplico metodologias desenvolvidas em anos gerenciando campanhas para mercados exigentes e de alto valor. A VIA Growth é o resultado direto dessa trajetória — construída para negócios que querem resultados reais, onde os números falam por si.
+            A VIA Growth nasceu de uma percepção simples: bons negócios perdiam clientes para concorrentes menores porque não apareciam onde o cliente estava procurando.
           </p>
           <p class="bio-text">
-            A VIA Growth nasceu de uma percepção simples: bons negócios perdiam clientes para concorrentes menores simplesmente porque não apareciam onde o cliente estava procurando. Criamos a metodologia que resolve isso, do primeiro clique à venda fechada.
+            Criamos a metodologia que resolve isso, do primeiro clique à venda fechada.
           </p>
           <div class="bio-badges">
-            <span class="badge">Fundador VIA Growth</span>
-            <span class="badge">Especialista em Performance Digital</span>
-            <span class="badge">Estrategista de Aquisição</span>
+            <span class="badge">Fundador</span>
+            <span class="badge">Performance Digital</span>
+            <span class="badge">Aquisição</span>
             <span class="badge">Tráfego Pago</span>
           </div>
         </div>
         <div class="bio-image-wrap">
-          <img src="robson.jpg.jpg" alt="Robson Silva, fundador da VIA Growth" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <img src="robson.jpg.jpg" alt="Robson Silva, fundador da VIA Growth" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="bio-image-placeholder" style="display:none;">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="24" r="14" fill="white"/>
-              <ellipse cx="32" cy="56" rx="22" ry="14" fill="white"/>
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin: 0 auto 12px;">
+              <circle cx="32" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M10 56 C 10 44, 21 38, 32 38 C 43 38, 54 44, 54 56" stroke="currentColor" stroke-width="2" fill="none"/>
             </svg>
             Foto de Robson Silva
           </div>
@@ -1000,68 +1457,87 @@
   <section>
     <div class="container">
       <div class="section-header">
-        <span class="tag">Dúvidas frequentes</span>
-        <h2>Perguntas que todo<br><em>dono de negócio faz.</em></h2>
+        <div class="eyebrow">Dúvidas frequentes</div>
+        <h2>Perguntas que todo<br><span class="accent">dono de negócio faz.</span></h2>
       </div>
+
       <div class="faq-list">
 
         <div class="faq-item" id="faq-1">
           <button class="faq-question" onclick="toggleFaq('faq-1')">
-            Vocês atendem qualquer tipo de negócio?
-            <span class="faq-chevron">▾</span>
+            <span class="faq-question-left">
+              <span class="faq-num">01</span>
+              Vocês atendem qualquer tipo de negócio?
+            </span>
+            <span class="faq-chevron">+</span>
           </button>
           <div class="faq-answer">
-            Atendemos negócios locais e digitais de diferentes segmentos — serviços, clínicas, comércio, consultorias, infoprodutos e outros. O critério principal é que o negócio tenha um ticket médio que justifique o investimento em tráfego pago e esteja disposto a trabalhar o processo comercial junto com a gente.
+            Atendemos negócios locais e digitais de diferentes segmentos, como serviços, clínicas, comércio, consultorias e infoprodutos. O critério principal é que o negócio tenha ticket médio que justifique o investimento em tráfego e esteja disposto a trabalhar o processo comercial com a gente.
           </div>
         </div>
 
         <div class="faq-item" id="faq-2">
           <button class="faq-question" onclick="toggleFaq('faq-2')">
-            Vocês fazem apenas os anúncios?
-            <span class="faq-chevron">▾</span>
+            <span class="faq-question-left">
+              <span class="faq-num">02</span>
+              Vocês fazem apenas os anúncios?
+            </span>
+            <span class="faq-chevron">+</span>
           </button>
           <div class="faq-answer">
-            Não. Anúncio sem processo comercial não fecha venda. Entregamos a gestão de tráfego, orientamos no posicionamento digital, estruturamos o seu CRM e fornecemos scripts para que a sua equipe saiba exatamente como atender e converter os leads que chegam.
+            Não. Anúncio sem processo comercial não fecha venda. Entregamos gestão de tráfego, orientamos no posicionamento digital, estruturamos seu CRM e fornecemos scripts para sua equipe saber como converter os leads que chegam.
           </div>
         </div>
 
         <div class="faq-item" id="faq-3">
           <button class="faq-question" onclick="toggleFaq('faq-3')">
-            Preciso ter presença digital já criada para começar?
-            <span class="faq-chevron">▾</span>
+            <span class="faq-question-left">
+              <span class="faq-num">03</span>
+              Preciso ter presença digital pronta para começar?
+            </span>
+            <span class="faq-chevron">+</span>
           </button>
           <div class="faq-answer">
-            Não. Orientamos você desde o zero: identidade visual, perfis nas redes, página de captura, Google Meu Negócio e campanhas. Você não precisa ter nada pronto para começar a trabalhar com a gente.
+            Não. Orientamos desde o zero: identidade visual, perfis em redes, página de captura, Google Meu Negócio e campanhas. Você não precisa ter nada pronto para começar.
           </div>
         </div>
 
         <div class="faq-item" id="faq-4">
           <button class="faq-question" onclick="toggleFaq('faq-4')">
-            Quanto tempo leva para ver os primeiros resultados?
-            <span class="faq-chevron">▾</span>
+            <span class="faq-question-left">
+              <span class="faq-num">04</span>
+              Quanto tempo leva para ver os primeiros resultados?
+            </span>
+            <span class="faq-chevron">+</span>
           </button>
           <div class="faq-answer">
-            Campanhas bem estruturadas começam a gerar leads já nos primeiros dias após o lançamento. A otimização é contínua — os melhores resultados aparecem a partir do segundo e terceiro mês, quando os dados permitem refinar segmentação e criativos com precisão.
+            Campanhas bem estruturadas começam a gerar leads nos primeiros dias após o lançamento. Os melhores resultados aparecem a partir do segundo e terceiro mês, quando os dados permitem refinar segmentação e criativos com precisão.
           </div>
         </div>
 
         <div class="faq-item" id="faq-5">
           <button class="faq-question" onclick="toggleFaq('faq-5')">
-            Qual é o investimento mínimo em anúncios?
-            <span class="faq-chevron">▾</span>
+            <span class="faq-question-left">
+              <span class="faq-num">05</span>
+              Qual é o investimento mínimo em anúncios?
+            </span>
+            <span class="faq-chevron">+</span>
           </button>
           <div class="faq-answer">
-            Isso depende do seu mercado, ticket médio e objetivo de crescimento. Discutimos isso na nossa conversa inicial — avaliamos o seu negócio e indicamos o investimento mínimo para que o tráfego gere resultados reais, sem desperdiçar orçamento.
+            Depende do seu mercado, ticket médio e objetivo. Discutimos isso na conversa inicial, avaliamos o seu negócio e indicamos o investimento mínimo para que o tráfego gere resultado real, sem desperdiçar orçamento.
           </div>
         </div>
 
         <div class="faq-item" id="faq-6">
           <button class="faq-question" onclick="toggleFaq('faq-6')">
-            Como funciona o primeiro passo?
-            <span class="faq-chevron">▾</span>
+            <span class="faq-question-left">
+              <span class="faq-num">06</span>
+              Como funciona o primeiro passo?
+            </span>
+            <span class="faq-chevron">+</span>
           </button>
           <div class="faq-answer">
-            Simples. Você preenche o formulário abaixo. Nossa equipe entra em contato em até 48h para uma conversa sem compromisso sobre o seu negócio e o seu mercado. Sem pressão, sem pitch agressivo.
+            Simples. Você preenche o formulário abaixo. Nossa equipe entra em contato em até 48h para uma conversa sem compromisso sobre seu negócio e mercado. Sem pressão, sem pitch agressivo.
           </div>
         </div>
 
@@ -1074,116 +1550,43 @@
     <div class="container">
       <div class="cta-inner">
         <div class="cta-left">
-          <span class="tag">Comece agora</span>
-          <h2>Os negócios que crescem com consistência <em>começam por aqui.</em></h2>
-          <p>Preencha o formulário. Nossa equipe entra em contato em até 48h com uma proposta personalizada para o seu negócio.</p>
+          <div class="eyebrow">Comece agora</div>
+          <h2>Negócios que crescem com consistência <span class="accent">começam aqui.</span></h2>
+          <p>Sem formulários, sem cadastros. Uma conversa direta no WhatsApp para entender o seu negócio e propor o próximo passo.</p>
           <div class="trust-items">
-            <div class="trust-item"><span class="trust-dot"></span> Atendimento em até 48h</div>
-            <div class="trust-item"><span class="trust-dot"></span> Reunião de diagnóstico estratégico</div>
-            <div class="trust-item"><span class="trust-dot"></span> Sem compromisso na primeira conversa</div>
-            <div class="trust-item"><span class="trust-dot"></span> Estratégia personalizada para o seu segmento</div>
+            <div class="trust-item"><span class="trust-icon">✓</span> Resposta em até 48h</div>
+            <div class="trust-item"><span class="trust-icon">✓</span> Diagnóstico estratégico gratuito</div>
+            <div class="trust-item"><span class="trust-icon">✓</span> Sem compromisso na primeira conversa</div>
+            <div class="trust-item"><span class="trust-icon">✓</span> Estratégia personalizada para o seu segmento</div>
           </div>
         </div>
-        <div class="form-card">
-          <h3 id="form-title">Fale com a VIA Growth</h3>
-          <p id="form-desc">Sem spam. Só uma conversa honesta sobre o seu crescimento.</p>
-          <form id="lead-form" onsubmit="submitForm(event)">
-            <div class="form-group">
-              <label>Nome completo</label>
-              <input id="f-nome" type="text" placeholder="João Silva" required />
-            </div>
-            <div class="form-group">
-              <label>E-mail</label>
-              <input id="f-email" type="email" placeholder="joao@seunegocio.com.br" required />
-            </div>
-            <div class="form-group">
-              <label>WhatsApp</label>
-              <input id="f-whatsapp" type="tel" placeholder="(11) 99999-9999" required />
-            </div>
-            <div class="form-group">
-              <label>Cidade e Estado</label>
-              <input id="f-cidade" type="text" placeholder="São Paulo, SP" required />
-            </div>
-            <div class="form-group">
-              <label>Segmento do seu negócio</label>
-              <select id="f-area" required>
-                <option value="" disabled selected>Selecione...</option>
-                <option>Serviços (clínica, consultório, estética)</option>
-                <option>Educação e Cursos</option>
-                <option>Comércio Local (loja física)</option>
-                <option>E-commerce</option>
-                <option>Consultoria e Assessoria</option>
-                <option>Advocacia e Serviços Jurídicos</option>
-                <option>Imobiliário (corretor, construtora)</option>
-                <option>Alimentação e Gastronomia</option>
-                <option>Tecnologia e SaaS</option>
-                <option>Serviços B2B</option>
-                <option>Outro</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-lg btn-form" id="btn-submit">Quero atrair clientes todo mês →</button>
-            <p class="form-micro">Seus dados estão seguros e não serão compartilhados.</p>
-          </form>
-          <div id="form-success">
-            <div class="success-icon">✓</div>
-            <h4>Contato Recebido!</h4>
-            <p>Nossa equipe vai analisar suas informações e entrará em contato pelo WhatsApp em até 48h.</p>
+
+        <div class="whatsapp-card">
+          <div class="whatsapp-icon">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
           </div>
+          <h3>Fale direto com o Robson.</h3>
+          <p class="whatsapp-desc">Clique abaixo. A mensagem já vai pronta. É só revisar e enviar.</p>
+          <a href="https://wa.me/5511981198834?text=Ol%C3%A1%20Robson!%20Vim%20pelo%20site%20da%20VIA%20Growth%20e%20quero%20entender%20como%20voc%C3%AAs%20podem%20me%20ajudar%20a%20estruturar%20a%20aquisi%C3%A7%C3%A3o%20de%20clientes%20do%20meu%20neg%C3%B3cio." target="_blank" rel="noopener" class="btn-whatsapp" id="btn-whatsapp">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Abrir conversa no WhatsApp
+          </a>
+          <span class="whatsapp-number">11 98119-8834</span>
+          <p class="whatsapp-micro">Resposta em até 48h</p>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 VIA Growth. Todos os direitos reservados. &nbsp;|&nbsp; <a href="#">Política de Privacidade</a></p>
+    <p>© 2026 VIA Growth · Todos os direitos reservados · <a href="#">Política de Privacidade</a></p>
   </footer>
 
   <script>
-    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbywrOfKV0Hrzab2fRqAHJvFG5PqvA-C4EhZUHP1KIDw4AiSeHQXaCt9JsJMxI0d6akPzA/exec';
-    const WHATSAPP_NUMBER = '5511981198834';
-
-    async function submitForm(e) {
-      e.preventDefault();
-      const btn = document.getElementById('btn-submit');
-      btn.textContent = 'Enviando...';
-      btn.disabled = true;
-
-      const nome     = document.getElementById('f-nome').value;
-      const email    = document.getElementById('f-email').value;
-      const whatsapp = document.getElementById('f-whatsapp').value;
-      const cidade   = document.getElementById('f-cidade').value;
-      const area     = document.getElementById('f-area').value;
-      const dataHora = new Date().toLocaleString('pt-BR');
-
-      // Monta mensagem para o WhatsApp
-      const mensagem =
-        `Olá! Acabei de preencher o formulário no site e quero garantir meu atendimento. Seguem meus dados:\n\n` +
-        `👤 *Nome:* ${nome}\n` +
-        `📧 *E-mail:* ${email}\n` +
-        `📱 *WhatsApp:* ${whatsapp}\n` +
-        `📍 *Cidade:* ${cidade}\n` +
-        `🏢 *Segmento:* ${area}\n` +
-        `🕐 *Data:* ${dataHora}`;
-
-      // Envia para o Google Sheets em segundo plano (sem bloquear)
-      fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, email, whatsapp, cidade, area, data: dataHora })
-      }).catch(() => {});
-
-      // Mostra mensagem de sucesso
-      document.getElementById('lead-form').style.display = 'none';
-      document.getElementById('form-title').style.display = 'none';
-      document.getElementById('form-desc').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-
-      // Abre WhatsApp com os dados do lead
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
-      window.open(url, '_blank');
-    }
-
     function togglePillar(id) {
       const el = document.getElementById(id);
       el.classList.toggle('open');
