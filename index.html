@@ -1096,13 +1096,129 @@
       .data-card-number { font-size: 2.2rem; }
       .result-number { font-size: 2.4rem; }
     }
+    /* ─── MOTION & PERSONALITY ─────────────────────── */
+
+    /* Scroll reveal */
+    .reveal-init { opacity: 0; transform: translateY(26px); }
+    .reveal-in {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
+    }
+
+    /* Hero ambient glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -25%; left: 50%;
+      width: 1100px; height: 640px; max-width: 130vw;
+      transform: translateX(-50%);
+      background: radial-gradient(circle at center, rgba(0,128,150,0.16), rgba(0,128,150,0) 60%);
+      filter: blur(24px);
+      z-index: 0;
+      pointer-events: none;
+      animation: breathe 9s ease-in-out infinite;
+    }
+    .hero .container, .hero .ticker { position: relative; z-index: 1; }
+    @keyframes breathe {
+      0%, 100% { opacity: .6;  transform: translateX(-50%) scale(1); }
+      50%      { opacity: 1;   transform: translateX(-50%) scale(1.09); }
+    }
+
+    /* Animated underline on hero accent word */
+    .hl { position: relative; white-space: nowrap; }
+    .hl::after {
+      content: '';
+      position: absolute; left: 0; right: 0; bottom: 0.01em;
+      height: 0.08em; border-radius: 3px;
+      background: currentColor;
+      transform: scaleX(0); transform-origin: left center;
+      animation: drawLine .8s cubic-bezier(.16,1,.3,1) forwards;
+      animation-delay: 1s;
+    }
+    @keyframes drawLine { to { transform: scaleX(1); } }
+
+    /* Ticker edge fade + pulsing dots */
+    .ticker {
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .ticker-inner .dot { animation: dotPulse 2.4s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100%{opacity:1;} 50%{opacity:.28;} }
+
+    /* Nav shadow on scroll */
+    nav { transition: box-shadow .3s ease, border-color .3s ease; }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.06); border-bottom-color: rgba(0,0,0,0.09); }
+
+    /* Richer card hover */
+    .data-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 22px 48px -28px rgba(0,128,150,0.55);
+    }
+
+    /* Números em cor única (azul da marca) */
+    .stat-number, .data-card-number, .result-number { color: var(--accent); }
+
+    /* Logo no nav */
+    .logo-img { height: 30px; width: auto; display: block; }
+    @media (max-width: 768px) { .logo-img { height: 26px; } }
+    @media (max-width: 480px) { .logo-img { height: 22px; } }
+
+    /* WhatsApp pulse ring */
+    .whatsapp-icon { position: relative; }
+    .whatsapp-icon::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 2px solid #25D366;
+      animation: pulseRing 2.6s ease-out infinite;
+    }
+    @keyframes pulseRing {
+      0%   { transform: scale(1);    opacity: .55; }
+      100% { transform: scale(1.55); opacity: 0; }
+    }
+
+    /* Primary button sheen */
+    .btn-accent { position: relative; overflow: hidden; }
+    .btn-accent::after {
+      content: '';
+      position: absolute; top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.28), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s ease;
+      pointer-events: none;
+    }
+    .btn-accent:hover::after { left: 130%; }
+
+    /* Hero staggered entrance */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero .container > * { opacity: 0; animation: heroIn .9s cubic-bezier(.16,1,.3,1) forwards; }
+      .hero .container > .eyebrow      { animation-delay: .05s; }
+      .hero .container > h1            { animation-delay: .15s; }
+      .hero .container > .hero-sub     { animation-delay: .30s; }
+      .hero .container > .hero-actions { animation-delay: .44s; }
+      .hero .container > .hero-micro   { animation-delay: .58s; }
+    }
+    @keyframes heroIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal-init { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="nav-inner">
-      <a class="logo" href="#">V<span>.</span>I<span>.</span>A Growth</a>
+      <a class="logo" href="#" aria-label="VIA Growth"><img class="logo-img" src="logo-via.png" alt="VIA Growth"></a>
       <a href="#form" class="btn">Falar com a VIA</a>
     </div>
   </nav>
@@ -1113,7 +1229,7 @@
       <div class="eyebrow">Aquisição com previsibilidade</div>
       <h1>
         Clientes todo mês.<br>
-        Por <span class="accent">método</span>, não por sorte.
+        Por <span class="accent hl">método</span>, não por sorte.
       </h1>
       <p class="hero-sub">
         A VIA Growth transforma negócios em operações de aquisição previsíveis. Leads qualificados, processo comercial estruturado e crescimento que você consegue planejar.
@@ -1122,7 +1238,7 @@
         <a href="#form" class="btn btn-accent btn-lg">Quero crescer com método →</a>
         <a href="#metodo" class="btn btn-ghost btn-lg">Ver metodologia</a>
       </div>
-      <div class="hero-micro">Diagnóstico gratuito · Resposta em 48h</div>
+      <div class="hero-micro">Diagnóstico gratuito · Resposta em até 5 minutos</div>
     </div>
 
     <!-- TICKER -->
@@ -1147,11 +1263,11 @@
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number">100<span class="accent">%</span></span>
+          <span class="stat-number"><span class="num" data-to="100">100</span><span class="accent">%</span></span>
           <span class="stat-label">Foco em resultado real</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">360<span class="accent">°</span></span>
+          <span class="stat-number"><span class="num" data-to="360">360</span><span class="accent">°</span></span>
           <span class="stat-label">Visão completa do funil</span>
         </div>
         <div class="stat-item">
@@ -1183,19 +1299,19 @@
       <div class="data-cards">
         <div class="data-card">
           <span class="data-card-label">[ 01 / Comportamento ]</span>
-          <div class="data-card-number">74<span class="accent">%</span></div>
+          <div class="data-card-number"><span class="num" data-to="74">74</span><span class="accent">%</span></div>
           <h3>das decisões de compra começam online.</h3>
           <p>Antes de contratar qualquer serviço, o consumidor pesquisa. Estar presente nesse momento separa quem cresce de quem depende de indicação.</p>
         </div>
         <div class="data-card">
           <span class="data-card-label">[ 02 / Mercado ]</span>
-          <div class="data-card-number"><span class="accent">R$</span>23bi</div>
+          <div class="data-card-number"><span class="accent">R$</span><span class="num" data-to="23">23</span>bi</div>
           <h3>investidos em mídia digital no Brasil.</h3>
           <p>O mercado de tráfego pago cresce todo ano. Quem estrutura presença agora sai na frente antes que o custo de entrada suba.</p>
         </div>
         <div class="data-card">
           <span class="data-card-label">[ 03 / Concorrência ]</span>
-          <div class="data-card-number">&lt;12<span class="accent">%</span></div>
+          <div class="data-card-number">&lt;<span class="num" data-to="12">12</span><span class="accent">%</span></div>
           <h3>dos negócios têm aquisição ativa.</h3>
           <p>A maioria ainda depende de indicação. A janela para quem age com método está aberta, e a concorrência ainda não acordou.</p>
         </div>
@@ -1219,7 +1335,7 @@
       <div class="via-pillars">
 
         <!-- V -->
-        <div class="pillar open" id="pillar-v">
+        <div class="pillar" id="pillar-v">
           <div class="pillar-header" onclick="togglePillar('pillar-v')">
             <span class="pillar-num">01</span>
             <div class="pillar-letter">V</div>
@@ -1394,17 +1510,17 @@
       <div class="results-grid">
         <div class="result-card">
           <span class="result-label-top">[ 01 / Leads ]</span>
-          <div class="result-number"><span class="accent">+</span>32.000</div>
+          <div class="result-number"><span class="accent">+</span><span class="num" data-to="32000" data-sep="true">32.000</span></div>
           <p class="result-label"><strong>leads qualificados gerados</strong> em campanhas ativas, com interesse real no serviço.</p>
         </div>
         <div class="result-card">
           <span class="result-label-top">[ 02 / Faturamento ]</span>
-          <div class="result-number"><span class="accent">R$</span>18M</div>
+          <div class="result-number"><span class="accent">R$</span><span class="num" data-to="18">18</span>M</div>
           <p class="result-label"><strong>em vendas geradas</strong>, resultado direto das campanhas estruturadas pela Metodologia VIA.</p>
         </div>
         <div class="result-card">
           <span class="result-label-top">[ 03 / Alcance ]</span>
-          <div class="result-number"><span class="accent">+</span>25M</div>
+          <div class="result-number"><span class="accent">+</span><span class="num" data-to="25">25</span>M</div>
           <p class="result-label"><strong>pessoas impactadas</strong>, gerando autoridade, visibilidade e posicionamento de mercado.</p>
         </div>
       </div>
@@ -1440,7 +1556,7 @@
           </div>
         </div>
         <div class="bio-image-wrap">
-          <img src="robson.jpg.jpg" alt="Robson Silva, fundador da VIA Growth" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <img src="robson.jpg.jpg" alt="Robson Silva, fundador da VIA Growth" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="bio-image-placeholder" style="display:none;">
             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin: 0 auto 12px;">
               <circle cx="32" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -1537,7 +1653,7 @@
             <span class="faq-chevron">+</span>
           </button>
           <div class="faq-answer">
-            Simples. Você preenche o formulário abaixo. Nossa equipe entra em contato em até 48h para uma conversa sem compromisso sobre seu negócio e mercado. Sem pressão, sem pitch agressivo.
+            Simples. Você clica no botão do WhatsApp abaixo, a mensagem já vai pronta. É só enviar e a gente te responde em até 5 minutos, em horário comercial, para uma conversa sem compromisso sobre o seu negócio e mercado. Sem pressão, sem pitch agressivo.
           </div>
         </div>
 
@@ -1554,7 +1670,7 @@
           <h2>Negócios que crescem com consistência <span class="accent">começam aqui.</span></h2>
           <p>Sem formulários, sem cadastros. Uma conversa direta no WhatsApp para entender o seu negócio e propor o próximo passo.</p>
           <div class="trust-items">
-            <div class="trust-item"><span class="trust-icon">✓</span> Resposta em até 48h</div>
+            <div class="trust-item"><span class="trust-icon">✓</span> Resposta em até 5 minutos</div>
             <div class="trust-item"><span class="trust-icon">✓</span> Diagnóstico estratégico gratuito</div>
             <div class="trust-item"><span class="trust-icon">✓</span> Sem compromisso na primeira conversa</div>
             <div class="trust-item"><span class="trust-icon">✓</span> Estratégia personalizada para o seu segmento</div>
@@ -1576,7 +1692,7 @@
             Abrir conversa no WhatsApp
           </a>
           <span class="whatsapp-number">11 98119-8834</span>
-          <p class="whatsapp-micro">Resposta em até 48h</p>
+          <p class="whatsapp-micro">Atendimento em até 5 minutos</p>
         </div>
       </div>
     </div>
@@ -1587,11 +1703,10 @@
   </footer>
 
   <script>
+    // ── Accordions ──────────────────────────────────
     function togglePillar(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle('open');
+      document.getElementById(id).classList.toggle('open');
     }
-
     function toggleFaq(id) {
       const el = document.getElementById(id);
       const wasOpen = el.classList.contains('open');
@@ -1599,6 +1714,7 @@
       if (!wasOpen) el.classList.add('open');
     }
 
+    // ── Smooth scroll ───────────────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
@@ -1608,6 +1724,72 @@
         }
       });
     });
+
+    // ── Nav shadow on scroll ────────────────────────
+    const navEl = document.querySelector('nav');
+    const onScroll = () => { if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 8); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── Count-up ────────────────────────────────────
+    function fmtNum(el, v) {
+      return el.dataset.sep === 'true'
+        ? Math.round(v).toLocaleString('pt-BR')
+        : String(Math.round(v));
+    }
+    function animateCount(el) {
+      const to = parseFloat(el.dataset.to);
+      if (reduceMotion) { el.textContent = fmtNum(el, to); return; }
+      const dur = 1400, start = performance.now();
+      const ease = t => 1 - Math.pow(1 - t, 3);
+      (function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        el.textContent = fmtNum(el, to * ease(p));
+        if (p < 1) requestAnimationFrame(tick);
+      })(start);
+    }
+
+    // ── Scroll reveal (+ count trigger) ─────────────
+    const revealGroups = [
+      ['.section-header', 0],
+      ['.stats-grid .stat-item', 90],
+      ['.data-cards .data-card', 110],
+      ['.via-pillars .pillar', 90],
+      ['.via-anchor', 0],
+      ['.results-grid .result-card', 110],
+      ['.results-footnote', 0],
+      ['.bio-wrapper > div', 120],
+      ['.faq-list .faq-item', 70],
+      ['.cta-left', 0],
+      ['.whatsapp-card', 120]
+    ];
+
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          el.classList.remove('reveal-init');
+          el.classList.add('reveal-in');
+          el.querySelectorAll('.num').forEach(animateCount);
+          io.unobserve(el);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      revealGroups.forEach(([sel, step]) => {
+        document.querySelectorAll(sel).forEach((el, i) => {
+          el.classList.add('reveal-init');
+          if (step) el.style.transitionDelay = (i * step) + 'ms';
+          el.querySelectorAll('.num').forEach(n => n.textContent = '0');
+          io.observe(el);
+        });
+      });
+    } else {
+      // sem animação: garante os números no valor final
+      document.querySelectorAll('.num').forEach(n => n.textContent = fmtNum(n, parseFloat(n.dataset.to)));
+    }
   </script>
 </body>
 </html>
