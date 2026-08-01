@@ -1703,6 +1703,38 @@
   </footer>
 
   <script>
+    // ── Origem de indicação (Programa de Embaixadores) ──
+    // Lê ?ref= do link do embaixador e carimba a mensagem do WhatsApp,
+    // para a origem chegar no CRM sem depender de ninguém lembrar quem indicou.
+    (function () {
+      var KEY = 'via_ref', MAX_AGE = 90 * 24 * 60 * 60 * 1000; // 90 dias
+
+      function clean(v) {
+        return (v || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30);
+      }
+
+      function stored() {
+        try {
+          var raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+          if (raw && raw.v && (Date.now() - raw.t) < MAX_AGE) return raw.v;
+        } catch (e) {}
+        return '';
+      }
+
+      var ref = clean(new URLSearchParams(location.search).get('ref')) || stored();
+      if (!ref) return;
+
+      // sobrevive se a pessoa navegar pelo site antes de clicar no botão
+      try { localStorage.setItem(KEY, JSON.stringify({ v: ref, t: Date.now() })); } catch (e) {}
+
+      document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
+        if (a.getAttribute('data-ref-done')) return;
+        a.setAttribute('data-ref-done', '1');
+        var sep = a.href.indexOf('text=') === -1 ? (a.href.indexOf('?') === -1 ? '?text=' : '&text=') : '';
+        a.href = a.href + sep + encodeURIComponent(' [ind:' + ref + ']');
+      });
+    })();
+
     // ── Accordions ──────────────────────────────────
     function togglePillar(id) {
       document.getElementById(id).classList.toggle('open');
