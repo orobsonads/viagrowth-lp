@@ -747,7 +747,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         </div>
         <h2>Pronto. Você é embaixador da VIA Growth.</h2>
-        <p class="modal-sub">Este é o seu link. Toda pessoa que chegar por ele já entra com a sua origem registrada, sem depender de ninguém lembrar quem indicou.</p>
+        <p class="modal-sub" id="done-sub">Este é o seu link. Toda pessoa que chegar por ele já entra com a sua origem registrada, sem depender de ninguém lembrar quem indicou.</p>
 
         <div class="linkbox">
           <span class="cap">Seu link de embaixador</span>
@@ -758,7 +758,7 @@
         </div>
 
         <a class="btn" id="wa-done" href="#" target="_blank" rel="noopener">
-          Avisar o Robson no WhatsApp
+          <span id="wa-label">Avisar o Robson no WhatsApp</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
         <p class="form-fine">Guarde o link. Ele vale para WhatsApp, Instagram, e-mail e conversa de corredor.</p>
@@ -791,13 +791,21 @@
                 .toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 20);
       }
 
-      function success(slug, empresa) {
+      function success(slug, empresa, pendente) {
         var url = 'https://viagrowth.com.br/?ref=' + slug;
         document.getElementById('ref-link').textContent = url;
         document.getElementById('wa-done').href =
           'https://wa.me/' + WA + '?text=' + encodeURIComponent(
-            'Olá Robson! Acabei de aceitar o termo do Programa de Embaixadores pela ' + empresa + '. Meu link: ' + url
+            'Olá Robson! Acabei de aceitar o termo do Programa de Embaixadores pela ' + empresa +
+            '. Aceito o regulamento e autorizo a divulgação do meu vídeo nos anúncios e nas redes da VIA Growth. Meu link: ' + url
           );
+
+        if (pendente) {
+          document.getElementById('done-sub').textContent =
+            'Seu link já está valendo. Falta só um toque no botão abaixo para eu confirmar sua adesão e registrar seu aceite.';
+          document.getElementById('wa-label').textContent = 'Confirmar adesão no WhatsApp';
+        }
+
         formView.classList.add('off');
         done.classList.add('on');
         overlay.scrollTop = 0;
@@ -831,17 +839,9 @@
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(data).toString()
         })
-        .then(function (r) { if (!r.ok) throw new Error('http'); success(slug, empresa); })
-        .catch(function () {
-          // rede fora, preview local ou form ainda não detectado: ninguém se perde, cai no WhatsApp
-          errorEl.innerHTML = 'Não consegui registrar automaticamente. <a href="https://wa.me/' + WA +
-            '?text=' + encodeURIComponent('Olá Robson! Quero ser embaixador da VIA Growth pela ' + empresa +
-            '. Aceito o regulamento e autorizo a divulgação do meu vídeo nos anúncios e redes da VIA Growth.') +
-            '" target="_blank" rel="noopener" style="color:#1EA7FF">Toca aqui para enviar pelo WhatsApp</a>.';
-          errorEl.style.display = 'block';
-          submitBt.removeAttribute('disabled');
-          submitBt.childNodes[0].nodeValue = 'Aceitar e gerar meu link ';
-        });
+        .then(function (r) { if (!r.ok) throw new Error('http'); success(slug, empresa, false); })
+        // rede fora, preview local ou registro ainda não ligado: ninguém se perde, o aceite fecha no WhatsApp
+        .catch(function () { success(slug, empresa, true); });
       });
     })();
   </script>
