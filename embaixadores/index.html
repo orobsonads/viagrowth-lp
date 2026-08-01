@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programa de Embaixadores VIA Growth</title>
+  <meta name="description" content="Indique a VIA Growth e ganhe 10% de desconto recorrente na sua fatura por cada cliente que fechar. Seu vídeo aprovado ainda vira anúncio da agência." />
+
+  <meta property="og:title" content="Programa de Embaixadores VIA Growth" />
+  <meta property="og:description" content="Indicação não se espera. Se sistematiza. Ganhe até 50% de desconto na sua mensalidade indicando a VIA Growth." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0A0B14;
+      --navy-alt:   #12131F;
+      --navy-card:  #161829;
+      --cyan:       #1EA7FF;
+      --cyan-soft:  #5BC8FF;
+      --white:      #FFFFFF;
+      --gray:       #9AA0B4;
+      --gray-dim:   #5A6072;
+      --line:       rgba(255,255,255,0.09);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.5;
+      letter-spacing: -0.011em;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ─── TOPO ─────────────────────────────────────── */
+    .topbar {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 0 0;
+    }
+    .topbar img { height: 30px; width: auto; }
+    .topbar .tag {
+      color: var(--cyan);
+      padding: 7px 14px;
+      border: 1px solid rgba(30,167,255,0.34);
+      border-radius: 999px;
+      background: rgba(30,167,255,0.08);
+    }
+
+    /* ─── HERO ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(120% 80% at 78% 8%, rgba(30,167,255,0.16) 0%, rgba(30,167,255,0) 58%),
+        linear-gradient(180deg, var(--navy) 0%, var(--navy-alt) 100%);
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(90% 70% at 50% 30%, #000 0%, transparent 75%);
+      -webkit-mask-image: radial-gradient(90% 70% at 50% 30%, #000 0%, transparent 75%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 56px 0 64px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan);
+      margin-bottom: 26px;
+    }
+    .kicker::before {
+      content: '';
+      width: 26px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6.4vw, 4.9rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+      max-width: 15ch;
+    }
+    h1 .cyan { color: var(--cyan); }
+
+    .lead {
+      margin-top: 26px;
+      max-width: 58ch;
+      font-size: clamp(1rem, 1.55vw, 1.15rem);
+      color: var(--gray);
+      line-height: 1.62;
+    }
+    .lead strong { color: var(--white); font-weight: 600; }
+
+    /* ─── BADGES ───────────────────────────────────── */
+    .badges {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 44px;
+      max-width: 860px;
+    }
+    .badge {
+      border: 1px solid rgba(30,167,255,0.32);
+      background: rgba(30,167,255,0.06);
+      border-radius: 12px;
+      padding: 18px 18px 16px;
+    }
+    .badge .num {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .badge .txt {
+      margin-top: 9px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    /* ─── CTA ──────────────────────────────────────── */
+    .cta-row {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      background: var(--cyan);
+      color: #05121F;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      padding: 17px 30px;
+      border-radius: 10px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      box-shadow: 0 10px 34px rgba(30,167,255,0.24);
+    }
+    .btn:hover {
+      background: var(--cyan-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(30,167,255,0.34);
+    }
+    .btn svg { width: 18px; height: 18px; }
+    .cta-note { font-size: 0.83rem; color: var(--gray-dim); max-width: 30ch; line-height: 1.45; }
+
+    /* ─── COMO FUNCIONA ────────────────────────────── */
+    .how {
+      background: var(--navy-alt);
+      border-top: 1px solid var(--line);
+      padding: 92px 0 96px;
+    }
+    .how h2 {
+      font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+      font-weight: 800;
+      letter-spacing: -0.042em;
+      line-height: 1.06;
+      max-width: 20ch;
+    }
+    .how h2 .cyan { color: var(--cyan); }
+    .how .sub {
+      margin-top: 16px;
+      color: var(--gray);
+      max-width: 54ch;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .step {
+      background: var(--navy-card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px 26px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 40px; height: 2px;
+      background: var(--cyan);
+    }
+    .step .idx {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--cyan);
+      font-weight: 500;
+    }
+    .step h3 {
+      margin-top: 14px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .step p {
+      margin-top: 11px;
+      font-size: 0.92rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .step p strong { color: var(--white); font-weight: 600; }
+
+    /* ─── CONTA ────────────────────────────────────── */
+    .math {
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(30,167,255,0.07) 0%, rgba(30,167,255,0.02) 100%);
+      padding: 30px 28px;
+      display: grid;
+      grid-template-columns: 1.05fr repeat(3, minmax(0, 0.65fr));
+      gap: 22px;
+      align-items: center;
+    }
+    .math .label {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .math .label b { color: var(--white); display: block; font-size: 1.08rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 5px; }
+    .tier { text-align: center; border-left: 1px solid var(--line); }
+    .tier .n { font-size: 1.75rem; font-weight: 800; color: var(--cyan); letter-spacing: -0.04em; line-height: 1; }
+    .tier .d { margin-top: 7px; font-size: 0.78rem; color: var(--gray); line-height: 1.35; }
+
+    /* ─── FECHAMENTO ───────────────────────────────── */
+    .close {
+      padding: 86px 0 92px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(70% 100% at 50% 0%, rgba(30,167,255,0.11) 0%, rgba(30,167,255,0) 70%),
+        var(--navy);
+    }
+    .close h2 {
+      font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      max-width: 18ch;
+      margin: 0 auto;
+    }
+    .close h2 .cyan { color: var(--cyan); }
+    .close .btn { margin-top: 30px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    footer .wm { color: var(--gray-dim); }
+    footer .fine {
+      font-size: 0.75rem;
+      color: var(--gray-dim);
+      max-width: 62ch;
+      line-height: 1.55;
+      text-align: right;
+    }
+
+    /* ─── MODAL DE ADESÃO ──────────────────────────── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(4,5,12,0.82);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 32px 20px;
+      overflow-y: auto;
+    }
+    .overlay.open { display: flex; }
+    body.locked { overflow: hidden; }
+
+    .modal {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      background: var(--navy-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 38px 38px 34px;
+      margin: auto;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+      animation: rise .26s cubic-bezier(.2,.7,.3,1);
+    }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 34px; height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--gray);
+      cursor: pointer;
+      transition: color .15s ease, border-color .15s ease;
+    }
+    .modal-close:hover { color: var(--white); border-color: rgba(255,255,255,0.28); }
+
+    .modal h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      max-width: 18ch;
+    }
+    .modal .modal-sub {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+
+    .field { margin-top: 18px; }
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--gray);
+      margin-bottom: 7px;
+    }
+    .field input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 13px 14px;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color .15s ease, background .15s ease;
+    }
+    .field input::placeholder { color: #4A4F60; }
+    .field input:focus {
+      outline: none;
+      border-color: var(--cyan);
+      background: rgba(30,167,255,0.06);
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .consent {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255,255,255,0.025);
+      padding: 16px 16px 14px;
+    }
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      cursor: pointer;
+    }
+    .check + .check { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .check input {
+      appearance: none;
+      -webkit-appearance: none;
+      flex: 0 0 auto;
+      width: 19px; height: 19px;
+      margin-top: 1px;
+      border: 1.5px solid var(--gray-dim);
+      border-radius: 5px;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      transition: border-color .15s ease, background .15s ease;
+    }
+    .check input:checked { background: var(--cyan); border-color: var(--cyan); }
+    .check input:checked::after {
+      content: '';
+      position: absolute;
+      left: 5.5px; top: 1.5px;
+      width: 5px; height: 10px;
+      border: solid #05121F;
+      border-width: 0 2.4px 2.4px 0;
+      transform: rotate(43deg);
+    }
+    .check span {
+      font-size: 0.84rem;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+    .check span b { color: var(--white); font-weight: 600; }
+    .check span a { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+
+    .modal .btn { width: 100%; justify-content: center; margin-top: 22px; }
+    .modal .btn[disabled] { opacity: 0.4; pointer-events: none; box-shadow: none; }
+    .form-fine {
+      margin-top: 13px;
+      font-size: 0.73rem;
+      color: var(--gray-dim);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .form-fine a { color: var(--gray); text-decoration: underline; }
+    .form-error {
+      margin-top: 14px;
+      font-size: 0.84rem;
+      color: #FF8A80;
+      line-height: 1.5;
+      display: none;
+    }
+    .hp { position: absolute; left: -9999px; opacity: 0; }
+
+    /* ─── SUCESSO ──────────────────────────────────── */
+    .done { display: none; text-align: center; }
+    .done.on { display: block; }
+    .form-view.off { display: none; }
+
+    .done .seal {
+      width: 56px; height: 56px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(30,167,255,0.12);
+      border: 1px solid rgba(30,167,255,0.4);
+      color: var(--cyan);
+    }
+    .done .seal svg { width: 26px; height: 26px; }
+    .done h2 { margin: 0 auto; max-width: 20ch; }
+    .done .modal-sub { max-width: 46ch; margin-left: auto; margin-right: auto; }
+
+    .linkbox {
+      margin-top: 24px;
+      border: 1px solid rgba(30,167,255,0.32);
+      background: rgba(30,167,255,0.06);
+      border-radius: 11px;
+      padding: 16px;
+      text-align: left;
+    }
+    .linkbox .cap {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+    .linkrow { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
+    .linkrow code {
+      flex: 1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--white);
+      word-break: break-all;
+      line-height: 1.4;
+    }
+    .copy {
+      flex: 0 0 auto;
+      background: var(--cyan);
+      color: #05121F;
+      border: none;
+      border-radius: 7px;
+      padding: 9px 14px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s ease;
+    }
+    .copy:hover { background: var(--cyan-soft); }
+
+    /* ─── MOBILE ───────────────────────────────────── */
+    @media (max-width: 860px) {
+      .badges { grid-template-columns: 1fr; gap: 10px; margin-top: 34px; }
+      .badge { display: flex; align-items: baseline; gap: 14px; padding: 15px 16px; }
+      .badge .num { font-size: 1.5rem; }
+      .badge .txt { margin-top: 0; font-size: 0.8rem; }
+      .steps { grid-template-columns: 1fr; }
+      .math { grid-template-columns: repeat(3, 1fr); }
+      .math .label { grid-column: 1 / -1; }
+      .tier:first-of-type { border-left: none; }
+      .how { padding: 68px 0 72px; }
+      .hero-inner { padding: 40px 0 52px; }
+      footer { flex-direction: column; align-items: flex-start; }
+      footer .fine { text-align: left; }
+      .modal { padding: 34px 22px 28px; }
+      .grid-2 { grid-template-columns: 1fr; gap: 0; }
+      .overlay { padding: 16px 12px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 20px; }
+      .btn { width: 100%; justify-content: center; }
+      .cta-note { max-width: none; }
+      .math { grid-template-columns: 1fr 1fr; }
+      .tier { border-left: none; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HERO ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <img src="logo-via-branca.png" alt="VIA Growth" />
+        <span class="mono tag">Embaixadores</span>
+      </div>
+    </div>
+
+    <div class="wrap hero-inner">
+      <span class="mono kicker">VIA Growth · Programa de indicação</span>
+
+      <h1>Programa de <span class="cyan">Embaixadores</span> VIA Growth</h1>
+
+      <p class="lead">
+        Sua empresa vira protagonista dos nossos anúncios e é recompensada por isso.
+        Cada indicação que fecha vira <strong>desconto na sua fatura, todo mês</strong>, enquanto você e o indicado seguirem com a VIA Growth.
+        E de bônus: seus vídeos aprovados viram anúncio da VIA Growth e post Collab impulsionado no Instagram.
+      </p>
+
+      <div class="badges">
+        <div class="badge">
+          <div class="num">Até 50%</div>
+          <div class="txt">de desconto na sua mensalidade</div>
+        </div>
+        <div class="badge">
+          <div class="num">10%</div>
+          <div class="txt">recorrente por venda fechada</div>
+        </div>
+        <div class="badge">
+          <div class="num">Link seu</div>
+          <div class="txt">rastreável, cada venda com origem identificada</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn" type="button" data-open-form>
+          Quero ser embaixador
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <span class="cta-note">Exclusivo para clientes ativos da VIA Growth. Você aceita o termo e já recebe seu link, leva 2 minutos.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMO FUNCIONA ══════════════════════════════ -->
+  <section class="how">
+    <div class="wrap">
+      <h2>Indicação não se espera. <span class="cyan">Se sistematiza.</span></h2>
+      <p class="sub">
+        Todo mundo elogia e promete indicar. O que quase ninguém faz é transformar isso em regra, com origem rastreada e recompensa automática. Aqui é assim.
+      </p>
+
+      <div class="steps">
+        <article class="step">
+          <span class="idx">01</span>
+          <h3>Você vira embaixador</h3>
+          <p>Aceita o termo do programa e recebe um <strong>link rastreável só seu</strong>. Toda venda que nasce dele fica registrada no nosso CRM, sem depender de ninguém lembrar quem indicou.</p>
+        </article>
+
+        <article class="step">
+          <span class="idx">02</span>
+          <h3>Indicou, fechou, você ganha</h3>
+          <p>Quando o indicado assina, <strong>10% do valor dele é abatido na sua fatura</strong>, todo mês, enquanto os dois seguirem com a gente. Não é bônus de uma vez só, é desconto que se acumula.</p>
+        </article>
+
+        <article class="step">
+          <span class="idx">03</span>
+          <h3>Seu vídeo vira anúncio</h3>
+          <p>Gravou um depoimento e a gente aprovou? Ele entra nos <strong>anúncios pagos da VIA Growth</strong> e em post Collab no Instagram. Você aparece para mais gente e ainda ganha desconto extra na mensalidade.</p>
+        </article>
+      </div>
+
+      <div class="math">
+        <div class="label">
+          <b>A conta é simples</b>
+          O desconto acumula por indicação ativa, com teto de 50% da sua mensalidade, e corre enquanto vocês dois estiverem com a gente.
+        </div>
+        <div class="tier">
+          <div class="n">1</div>
+          <div class="d">indicação ativa<br>10% off</div>
+        </div>
+        <div class="tier">
+          <div class="n">3</div>
+          <div class="d">indicações ativas<br>30% off</div>
+        </div>
+        <div class="tier">
+          <div class="n">5</div>
+          <div class="d">indicações ativas<br>50% off, o teto</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FECHAMENTO ═════════════════════════════════ -->
+  <section class="close">
+    <div class="wrap">
+      <h2>Você já indica. <span class="cyan">Agora você ganha com isso.</span></h2>
+      <button class="btn" type="button" data-open-form>
+        Quero meu link de embaixador
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>
+      <span class="mono wm">VIA Growth</span>
+      <p class="fine">
+        Programa exclusivo para clientes ativos da VIA Growth. O desconto vale enquanto embaixador e indicado permanecerem ativos e em dia, e é aplicado na fatura do mês seguinte à assinatura. Indicação válida somente com origem registrada pelo link do embaixador. <a href="regulamento.html" style="color:var(--gray);text-decoration:underline">Ver regulamento completo</a>.
+      </p>
+    </footer>
+  </div>
+
+  <!-- ═══ MODAL DE ADESÃO ════════════════════════════ -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="modal-close" type="button" id="close" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+
+      <!-- ── formulário ── -->
+      <div class="form-view" id="form-view">
+        <h2 id="modal-title">Adesão ao Programa de Embaixadores</h2>
+        <p class="modal-sub">Preencha, aceite o termo e seu link rastreável fica pronto na hora.</p>
+
+        <form id="form" name="embaixadores" method="POST" data-netlify="true" netlify-honeypot="empresa-site">
+          <input type="hidden" name="form-name" value="embaixadores" />
+          <p class="hp"><label>Não preencha: <input name="empresa-site" tabindex="-1" autocomplete="off" /></label></p>
+
+          <div class="field">
+            <label for="empresa">Nome da empresa</label>
+            <input type="text" id="empresa" name="empresa" required placeholder="Mobile D'arte" autocomplete="organization" />
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="responsavel">Responsável</label>
+              <input type="text" id="responsavel" name="responsavel" required placeholder="Nome de quem assina" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="whatsapp">WhatsApp</label>
+              <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required placeholder="voce@empresa.com.br" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="instagram">Instagram da empresa</label>
+              <input type="text" id="instagram" name="instagram" placeholder="@suaempresa" />
+            </div>
+          </div>
+
+          <div class="consent">
+            <label class="check">
+              <input type="checkbox" name="aceite_regulamento" required value="sim" />
+              <span>Li e aceito o <a href="regulamento.html" target="_blank" rel="noopener">regulamento do programa</a>: <b>10% de desconto recorrente</b> na minha fatura por indicação ativa, com teto de 50%, válido enquanto eu e o indicado seguirmos como clientes.</span>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" name="autorizacao_imagem" required value="sim" />
+              <span><b>Autorizo a divulgação do meu vídeo.</b> Quando eu enviar um depoimento e a VIA Growth aprovar, ele pode rodar em <b>anúncios pagos e nas redes sociais da VIA Growth</b>, junto com o nome e a marca da minha empresa, por prazo indeterminado e sem custo para nenhuma das partes. Posso pedir a retirada por escrito a qualquer momento.</span>
+            </label>
+          </div>
+
+          <button class="btn" type="submit" id="submit">
+            Aceitar e gerar meu link
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+
+          <p class="form-error" id="error"></p>
+          <p class="form-fine">Seus dados ficam só com a VIA Growth. Dúvidas antes de aceitar? <a href="https://wa.me/5511981198834?text=Ol%C3%A1%20Robson!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Programa%20de%20Embaixadores." target="_blank" rel="noopener">Fala comigo no WhatsApp</a>.</p>
+        </form>
+      </div>
+
+      <!-- ── sucesso ── -->
+      <div class="done" id="done">
+        <div class="seal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h2>Pronto. Você é embaixador da VIA Growth.</h2>
+        <p class="modal-sub">Este é o seu link. Toda pessoa que chegar por ele já entra com a sua origem registrada, sem depender de ninguém lembrar quem indicou.</p>
+
+        <div class="linkbox">
+          <span class="cap">Seu link de embaixador</span>
+          <div class="linkrow">
+            <code id="ref-link">https://viagrowth.com.br/?ref=</code>
+            <button class="copy" type="button" id="copy">Copiar</button>
+          </div>
+        </div>
+
+        <a class="btn" id="wa-done" href="#" target="_blank" rel="noopener">
+          Avisar o Robson no WhatsApp
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <p class="form-fine">Guarde o link. Ele vale para WhatsApp, Instagram, e-mail e conversa de corredor.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var overlay  = document.getElementById('overlay');
+      var form     = document.getElementById('form');
+      var formView = document.getElementById('form-view');
+      var done     = document.getElementById('done');
+      var errorEl  = document.getElementById('error');
+      var submitBt = document.getElementById('submit');
+      var WA       = '5511981198834';
+
+      function open()  { overlay.classList.add('open'); document.body.classList.add('locked'); setTimeout(function(){ document.getElementById('empresa').focus(); }, 60); }
+      function close() { overlay.classList.remove('open'); document.body.classList.remove('locked'); }
+
+      document.querySelectorAll('[data-open-form]').forEach(function (b) { b.addEventListener('click', open); });
+      document.getElementById('close').addEventListener('click', close);
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+
+      // slug do embaixador a partir do nome da empresa
+      function slugify(s) {
+        return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 20);
+      }
+
+      function success(slug, empresa) {
+        var url = 'https://viagrowth.com.br/?ref=' + slug;
+        document.getElementById('ref-link').textContent = url;
+        document.getElementById('wa-done').href =
+          'https://wa.me/' + WA + '?text=' + encodeURIComponent(
+            'Olá Robson! Acabei de aceitar o termo do Programa de Embaixadores pela ' + empresa + '. Meu link: ' + url
+          );
+        formView.classList.add('off');
+        done.classList.add('on');
+        overlay.scrollTop = 0;
+      }
+
+      document.getElementById('copy').addEventListener('click', function () {
+        var t = document.getElementById('ref-link').textContent;
+        var btn = this;
+        navigator.clipboard.writeText(t).then(function () {
+          btn.textContent = 'Copiado';
+          setTimeout(function () { btn.textContent = 'Copiar'; }, 2000);
+        });
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+
+        var empresa = form.empresa.value.trim();
+        var slug    = slugify(empresa);
+        if (!slug) { errorEl.textContent = 'Confira o nome da empresa.'; errorEl.style.display = 'block'; return; }
+
+        submitBt.setAttribute('disabled', '');
+        submitBt.childNodes[0].nodeValue = 'Enviando... ';
+
+        var data = new FormData(form);
+        data.append('slug', slug);
+
+        fetch(location.pathname, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString()
+        })
+        .then(function (r) { if (!r.ok) throw new Error('http'); success(slug, empresa); })
+        .catch(function () {
+          // rede fora, preview local ou form ainda não detectado: ninguém se perde, cai no WhatsApp
+          errorEl.innerHTML = 'Não consegui registrar automaticamente. <a href="https://wa.me/' + WA +
+            '?text=' + encodeURIComponent('Olá Robson! Quero ser embaixador da VIA Growth pela ' + empresa +
+            '. Aceito o regulamento e autorizo a divulgação do meu vídeo nos anúncios e redes da VIA Growth.') +
+            '" target="_blank" rel="noopener" style="color:#1EA7FF">Toca aqui para enviar pelo WhatsApp</a>.';
+          errorEl.style.display = 'block';
+          submitBt.removeAttribute('disabled');
+          submitBt.childNodes[0].nodeValue = 'Aceitar e gerar meu link ';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
