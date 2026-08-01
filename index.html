@@ -692,6 +692,133 @@
       font-weight: 700;
     }
 
+    /* ─── FORMULÁRIO DE QUALIFICAÇÃO ───────────────── */
+    .qualify-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px 44px;
+      color: var(--ink);
+    }
+    .qualify-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.028em;
+      line-height: 1.2;
+    }
+    .qualify-sub {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    .qf { margin-top: 20px; }
+    .qf label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 7px;
+      letter-spacing: -0.005em;
+    }
+    .qf input,
+    .qf select {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--paper);
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .qf input::placeholder { color: var(--gray-soft); }
+    .qf select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236E6E73' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .qf select:invalid { color: var(--gray-soft); }
+    .qf input:focus,
+    .qf select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,128,150,0.13);
+      background: white;
+    }
+    .qf-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .qf-2 .qf { margin-top: 20px; }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 26px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 17px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-submit[disabled] { opacity: 0.5; cursor: default; transform: none; }
+
+    .qf-fine {
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: var(--gray-soft);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .qf-fine a { color: var(--gray); text-decoration: underline; }
+    .qf-error {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: #C0392B;
+      line-height: 1.5;
+      display: none;
+    }
+    .qf-hp { position: absolute; left: -9999px; opacity: 0; }
+
+    /* estado de sucesso */
+    .qualify-done { display: none; text-align: center; padding: 22px 0 8px; }
+    .qualify-done.on { display: block; }
+    .qualify-form.off { display: none; }
+    .done-seal {
+      width: 72px; height: 72px;
+      margin: 0 auto 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .qualify-done h3 { max-width: 16ch; margin: 0 auto; }
+    .qualify-done .qualify-sub { max-width: 34ch; margin-left: auto; margin-right: auto; }
+    .done-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 26px;
+      background: #25D366;
+      color: white;
+      border-radius: 12px;
+      padding: 15px 26px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity .15s ease;
+    }
+    .done-wa:hover { opacity: 0.9; }
+
     /* ─── WHATSAPP CARD ────────────────────────────── */
     .whatsapp-card {
       background: white;
@@ -1003,10 +1130,14 @@
       .whatsapp-icon svg { width: 36px; height: 36px; }
       .whatsapp-desc { font-size: 0.95rem; margin-bottom: 28px; }
       .btn-whatsapp { font-size: 1rem; padding: 16px 24px; }
+      .qualify-card { padding: 38px 26px; border-radius: 20px; }
+      .qf-2 { grid-template-columns: 1fr; gap: 0; }
     }
 
     /* MOBILE PEQUENO (480px) */
     @media (max-width: 480px) {
+      .qualify-card { padding: 32px 20px; border-radius: 16px; }
+      .qualify-card h3 { font-size: 1.3rem; }
       section { padding: 72px 0; }
       .container { padding: 0 18px; }
       .nav-inner { padding: 0 18px; height: 58px; }
@@ -1668,7 +1799,7 @@
         <div class="cta-left">
           <div class="eyebrow">Comece agora</div>
           <h2>Negócios que crescem com consistência <span class="accent">começam aqui.</span></h2>
-          <p>Sem formulários, sem cadastros. Uma conversa direta no WhatsApp para entender o seu negócio e propor o próximo passo.</p>
+          <p>São 6 perguntas rápidas sobre o seu negócio. Com elas eu chego na conversa já sabendo do que você precisa, em vez de gastar seu tempo perguntando o básico.</p>
           <div class="trust-items">
             <div class="trust-item"><span class="trust-icon">✓</span> Resposta em até 5 minutos</div>
             <div class="trust-item"><span class="trust-icon">✓</span> Diagnóstico estratégico gratuito</div>
@@ -1677,22 +1808,95 @@
           </div>
         </div>
 
-        <div class="whatsapp-card">
-          <div class="whatsapp-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
+        <div class="qualify-card">
+
+          <!-- formulário -->
+          <div class="qualify-form" id="qualify-form-view">
+            <h3>Queremos conhecer seu negócio.</h3>
+            <p class="qualify-sub">Preencha abaixo e eu volto com um diagnóstico do seu cenário. Leva menos de 1 minuto.</p>
+
+            <form id="qualify-form" name="qualificacao" method="POST" data-netlify="true" netlify-honeypot="site-empresa">
+              <input type="hidden" name="form-name" value="qualificacao" />
+              <p class="qf-hp"><label>Não preencha: <input name="site-empresa" tabindex="-1" autocomplete="off" /></label></p>
+
+              <input type="hidden" name="origem_indicacao" id="qf-origem" value="" />
+              <input type="hidden" name="utm" id="qf-utm" value="" />
+              <input type="hidden" name="pagina" id="qf-pagina" value="" />
+
+              <div class="qf">
+                <label for="qf-nome">Nome</label>
+                <input type="text" id="qf-nome" name="nome" required placeholder="Digite seu nome" autocomplete="name" />
+              </div>
+
+              <div class="qf">
+                <label for="qf-email">E-mail</label>
+                <input type="email" id="qf-email" name="email" required placeholder="Digite seu e-mail" autocomplete="email" />
+              </div>
+
+              <div class="qf">
+                <label for="qf-telefone">Telefone</label>
+                <input type="tel" id="qf-telefone" name="telefone" required placeholder="Seu número de celular" autocomplete="tel" />
+              </div>
+
+              <div class="qf">
+                <label for="qf-modelo">Qual é o seu modelo de negócio?</label>
+                <select id="qf-modelo" name="modelo_negocio" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>Negócio local (loja física)</option>
+                  <option>Móveis planejados</option>
+                  <option>E-commerce</option>
+                  <option>Infoproduto ou lançamento</option>
+                  <option>Serviços e consultoria</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+
+              <div class="qf">
+                <label for="qf-time">Número de funcionários</label>
+                <select id="qf-time" name="funcionarios" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>Somente eu</option>
+                  <option>Entre 2 e 5 funcionários</option>
+                  <option>Entre 6 e 10 funcionários</option>
+                  <option>Entre 11 e 20 funcionários</option>
+                  <option>Acima de 20 funcionários</option>
+                </select>
+              </div>
+
+              <div class="qf">
+                <label for="qf-invest">Qual é o investimento atual em tráfego pago?</label>
+                <select id="qf-invest" name="investimento" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>Ainda não investimos</option>
+                  <option>Até R$ 1.000,00</option>
+                  <option>Entre R$ 1.000,01 e R$ 3.000,00</option>
+                  <option>Entre R$ 3.000,01 e R$ 5.000,00</option>
+                  <option>Acima de R$ 5.000,01</option>
+                </select>
+              </div>
+
+              <button class="btn-submit" type="submit" id="qf-submit">Enviar</button>
+
+              <p class="qf-error" id="qf-error"></p>
+              <p class="qf-fine">Seus dados ficam só com a VIA Growth e servem para preparar seu diagnóstico. Política de Privacidade e Termos de Serviço se aplicam.</p>
+            </form>
           </div>
-          <h3>Fale direto com o Robson.</h3>
-          <p class="whatsapp-desc">Clique abaixo. A mensagem já vai pronta. É só revisar e enviar.</p>
-          <a href="https://wa.me/5511981198834?text=Ol%C3%A1%20Robson!%20Vim%20pelo%20site%20da%20VIA%20Growth%20e%20quero%20entender%20como%20voc%C3%AAs%20podem%20me%20ajudar%20a%20estruturar%20a%20aquisi%C3%A7%C3%A3o%20de%20clientes%20do%20meu%20neg%C3%B3cio." target="_blank" rel="noopener" class="btn-whatsapp" id="btn-whatsapp">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            Abrir conversa no WhatsApp
-          </a>
-          <span class="whatsapp-number">11 98119-8834</span>
-          <p class="whatsapp-micro">Atendimento em até 5 minutos</p>
+
+          <!-- sucesso -->
+          <div class="qualify-done" id="qualify-done">
+            <div class="done-seal">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3>Recebi seus dados.</h3>
+            <p class="qualify-sub">Vou analisar seu cenário e te chamar em até 5 minutos no horário comercial. Se preferir adiantar, me chama agora.</p>
+            <a class="done-wa" id="qf-wa" href="#" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Falar agora no WhatsApp
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1722,16 +1926,101 @@
       }
 
       var ref = clean(new URLSearchParams(location.search).get('ref')) || stored();
+      window.VIA_REF = ref || '';
       if (!ref) return;
 
-      // sobrevive se a pessoa navegar pelo site antes de clicar no botão
+      // sobrevive se a pessoa navegar pelo site antes de converter
       try { localStorage.setItem(KEY, JSON.stringify({ v: ref, t: Date.now() })); } catch (e) {}
+    })();
 
-      document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
-        if (a.getAttribute('data-ref-done')) return;
-        a.setAttribute('data-ref-done', '1');
-        var sep = a.href.indexOf('text=') === -1 ? (a.href.indexOf('?') === -1 ? '?text=' : '&text=') : '';
-        a.href = a.href + sep + encodeURIComponent(' [ind:' + ref + ']');
+    // ── Formulário de qualificação ──────────────────
+    (function () {
+      var form = document.getElementById('qualify-form');
+      if (!form) return;
+
+      var WA       = '5511981198834';
+      var formView = document.getElementById('qualify-form-view');
+      var doneView = document.getElementById('qualify-done');
+      var errorEl  = document.getElementById('qf-error');
+      var submitBt = document.getElementById('qf-submit');
+
+      window.dataLayer = window.dataLayer || [];
+
+      // contexto que viaja junto com o lead
+      document.getElementById('qf-origem').value = window.VIA_REF || '(nenhuma)';
+      document.getElementById('qf-utm').value    = location.search.replace(/^\?/, '') || '(direto)';
+      document.getElementById('qf-pagina').value = location.pathname;
+
+      // engajamento: dispara uma vez, no primeiro campo tocado
+      var started = false;
+      form.addEventListener('focusin', function () {
+        if (started) return;
+        started = true;
+        window.dataLayer.push({ event: 'form_start', form_name: 'qualificacao_via' });
+      });
+
+      function quente(invest, time) {
+        return invest === 'Entre R$ 3.000,01 e R$ 5.000,00'
+            || invest === 'Acima de R$ 5.000,01'
+            || time === 'Entre 11 e 20 funcionários'
+            || time === 'Acima de 20 funcionários';
+      }
+
+      function concluir(d, falhou) {
+        var resumo = 'Olá Robson! Acabei de preencher o formulário no site.\n\n'
+          + 'Nome: ' + d.nome + '\n'
+          + 'Modelo de negócio: ' + d.modelo + '\n'
+          + 'Funcionários: ' + d.time + '\n'
+          + 'Investimento em tráfego: ' + d.invest
+          + (window.VIA_REF ? '\n\n[ind:' + window.VIA_REF + ']' : '');
+
+        document.getElementById('qf-wa').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(resumo);
+
+        if (falhou) {
+          doneView.querySelector('h3').textContent = 'Quase lá.';
+          doneView.querySelector('.qualify-sub').textContent =
+            'Não consegui registrar automaticamente. Toca no botão abaixo que seus dados vão junto na mensagem.';
+        }
+
+        formView.classList.add('off');
+        doneView.classList.add('on');
+        doneView.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+        submitBt.setAttribute('disabled', '');
+        submitBt.textContent = 'Enviando...';
+
+        var fd = new FormData(form);
+        var d  = {
+          nome:   fd.get('nome'),
+          modelo: fd.get('modelo_negocio'),
+          time:   fd.get('funcionarios'),
+          invest: fd.get('investimento')
+        };
+
+        window.dataLayer.push({
+          event: 'generate_lead',
+          form_name: 'qualificacao_via',
+          modelo_negocio: d.modelo,
+          funcionarios: d.time,
+          investimento_trafego: d.invest,
+          origem_indicacao: window.VIA_REF || '(nenhuma)',
+          lead_qualificado: quente(d.invest, d.time) ? 'sim' : 'nao'
+        });
+
+        fetch(location.pathname, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(fd).toString()
+        })
+        .then(function (r) { if (!r.ok) throw new Error('http'); concluir(d, false); })
+        .catch(function () {
+          window.dataLayer.push({ event: 'form_error', form_name: 'qualificacao_via' });
+          concluir(d, true);
+        });
       });
     })();
 
