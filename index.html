@@ -6,6 +6,26 @@
   <title>VIA Growth, aquisição de clientes com previsibilidade.</title>
   <meta name="description" content="Negócios que crescem com método, não com sorte. Leads qualificados todo mês, processo comercial estruturado e previsibilidade real." />
 
+  <!-- ═══ CAMADA DE DADOS ═══════════════════════════════════════════
+       Nasce antes de tudo, então nenhum evento se perde por ordem de
+       carregamento. Os eventos ficam empilhados aqui e o GTM lê o
+       histórico assim que subir.
+
+       Eventos publicados por esta página:
+         page_data     · contexto da visita (origem de indicação e UTMs)
+         cta_click     · clique em qualquer CTA que leva ao formulário
+         form_start    · primeiro campo do formulário tocado
+         generate_lead · lead registrado (conversão)
+         form_error    · falha no envio
+
+       PARA LIGAR O GTM: colar o snippet oficial logo abaixo deste
+       bloco (parte do <head>) e o <noscript> no início do <body>.
+       Não apagar este bloco: o GTM depende dele já existir.
+  ════════════════════════════════════════════════════════════════ -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1889,12 +1909,7 @@
             </div>
             <h3>Recebi seus dados.</h3>
             <p class="qualify-sub">Vou analisar seu cenário e te chamar em até 5 minutos no horário comercial. Se preferir adiantar, me chama agora.</p>
-            <a class="done-wa" id="qf-wa" href="#" target="_blank" rel="noopener">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              Falar agora no WhatsApp
-            </a>
+            
           </div>
 
         </div>
@@ -1925,12 +1940,37 @@
         return '';
       }
 
-      var ref = clean(new URLSearchParams(location.search).get('ref')) || stored();
+      var q   = new URLSearchParams(location.search);
+      var ref = clean(q.get('ref')) || stored();
       window.VIA_REF = ref || '';
-      if (!ref) return;
 
       // sobrevive se a pessoa navegar pelo site antes de converter
-      try { localStorage.setItem(KEY, JSON.stringify({ v: ref, t: Date.now() })); } catch (e) {}
+      if (ref) {
+        try { localStorage.setItem(KEY, JSON.stringify({ v: ref, t: Date.now() })); } catch (e) {}
+      }
+
+      // contexto da visita, disponível para qualquer tag desde o primeiro hit
+      window.dataLayer.push({
+        event: 'page_data',
+        origem_indicacao: ref || '(nenhuma)',
+        utm_source:   q.get('utm_source')   || '(direto)',
+        utm_medium:   q.get('utm_medium')   || '(nenhum)',
+        utm_campaign: q.get('utm_campaign') || '(nenhuma)',
+        utm_content:  q.get('utm_content')  || '(nenhum)'
+      });
+    })();
+
+    // ── Clique nos CTAs que levam ao formulário ─────
+    (function () {
+      document.querySelectorAll('a[href="#form"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          window.dataLayer.push({
+            event: 'cta_click',
+            cta_texto: (a.textContent || '').trim().replace(/\s+/g, ' '),
+            cta_local: a.closest('nav') ? 'menu' : (a.closest('.hero') ? 'hero' : 'pagina')
+          });
+        });
+      });
     })();
 
     // ── Formulário de qualificação ──────────────────
@@ -1938,7 +1978,6 @@
       var form = document.getElementById('qualify-form');
       if (!form) return;
 
-      var WA       = '5511981198834';
       var formView = document.getElementById('qualify-form-view');
       var doneView = document.getElementById('qualify-done');
       var errorEl  = document.getElementById('qf-error');
@@ -1959,6 +1998,11 @@
         window.dataLayer.push({ event: 'form_start', form_name: 'qualificacao_via' });
       });
 
+      // id único do evento, para o GA4 e o Pixel/CAPI não contarem a mesma conversão duas vezes
+      function eventId() {
+        return 'lead-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+      }
+
       function quente(invest, time) {
         return invest === 'Entre R$ 3.000,01 e R$ 5.000,00'
             || invest === 'Acima de R$ 5.000,01'
@@ -1966,25 +2010,17 @@
             || time === 'Acima de 20 funcionários';
       }
 
-      function concluir(d, falhou) {
-        var resumo = 'Olá Robson! Acabei de preencher o formulário no site.\n\n'
-          + 'Nome: ' + d.nome + '\n'
-          + 'Modelo de negócio: ' + d.modelo + '\n'
-          + 'Funcionários: ' + d.time + '\n'
-          + 'Investimento em tráfego: ' + d.invest
-          + (window.VIA_REF ? '\n\n[ind:' + window.VIA_REF + ']' : '');
-
-        document.getElementById('qf-wa').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(resumo);
-
-        if (falhou) {
-          doneView.querySelector('h3').textContent = 'Quase lá.';
-          doneView.querySelector('.qualify-sub').textContent =
-            'Não consegui registrar automaticamente. Toca no botão abaixo que seus dados vão junto na mensagem.';
-        }
-
+      function concluir() {
         formView.classList.add('off');
         doneView.classList.add('on');
         doneView.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function falhou() {
+        errorEl.textContent = 'Não consegui enviar agora. Confere sua conexão e toca em Enviar de novo.';
+        errorEl.style.display = 'block';
+        submitBt.removeAttribute('disabled');
+        submitBt.textContent = 'Enviar';
       }
 
       form.addEventListener('submit', function (e) {
@@ -2001,25 +2037,31 @@
           invest: fd.get('investimento')
         };
 
-        window.dataLayer.push({
-          event: 'generate_lead',
-          form_name: 'qualificacao_via',
-          modelo_negocio: d.modelo,
-          funcionarios: d.time,
-          investimento_trafego: d.invest,
-          origem_indicacao: window.VIA_REF || '(nenhuma)',
-          lead_qualificado: quente(d.invest, d.time) ? 'sim' : 'nao'
-        });
-
         fetch(location.pathname, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(fd).toString()
         })
-        .then(function (r) { if (!r.ok) throw new Error('http'); concluir(d, false); })
+        .then(function (r) {
+          if (!r.ok) throw new Error('http');
+
+          // conversão: só dispara depois que o lead foi mesmo registrado
+          window.dataLayer.push({
+            event: 'generate_lead',
+            form_name: 'qualificacao_via',
+            event_id: eventId(),            // deduplicação quando o Pixel/CAPI entrar
+            modelo_negocio: d.modelo,
+            funcionarios: d.time,
+            investimento_trafego: d.invest,
+            origem_indicacao: window.VIA_REF || '(nenhuma)',
+            lead_qualificado: quente(d.invest, d.time) ? 'sim' : 'nao'
+          });
+
+          concluir();
+        })
         .catch(function () {
           window.dataLayer.push({ event: 'form_error', form_name: 'qualificacao_via' });
-          concluir(d, true);
+          falhou();
         });
       });
     })();
