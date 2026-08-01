@@ -1871,6 +1871,11 @@
                 </select>
               </div>
 
+              <div class="qf" id="qf-outro-wrap" hidden>
+                <label for="qf-outro">Qual é o seu segmento?</label>
+                <input type="text" id="qf-outro" name="segmento" placeholder="Ex: clínica odontológica, barbearia, academia" />
+              </div>
+
               <div class="qf">
                 <label for="qf-time">Número de funcionários</label>
                 <select id="qf-time" name="funcionarios" required>
@@ -2008,6 +2013,23 @@
       document.getElementById('qf-utm').value         = location.search.replace(/^\?/, '') || '(direto)';
       document.getElementById('qf-pagina').value      = location.pathname;
 
+      // "Outro" abre o campo livre de segmento, e só ele é obrigatório nesse caso
+      var modelo    = document.getElementById('qf-modelo');
+      var outroWrap = document.getElementById('qf-outro-wrap');
+      var outro     = document.getElementById('qf-outro');
+
+      modelo.addEventListener('change', function () {
+        var eOutro = modelo.value === 'Outro';
+        outroWrap.hidden = !eOutro;
+        if (eOutro) {
+          outro.setAttribute('required', '');
+          outro.focus();
+        } else {
+          outro.removeAttribute('required');
+          outro.value = '';
+        }
+      });
+
       // engajamento: dispara uma vez, no primeiro campo tocado
       var started = false;
       form.addEventListener('focusin', function () {
@@ -2047,10 +2069,12 @@
         submitBt.setAttribute('disabled', '');
         submitBt.textContent = 'Enviando...';
 
-        var fd = new FormData(form);
-        var d  = {
+        var fd  = new FormData(form);
+        var seg = (fd.get('segmento') || '').trim();
+        var d   = {
           nome:   fd.get('nome'),
-          modelo: fd.get('modelo_negocio'),
+          // com "Outro", o que vale para o relatório é o segmento que a pessoa escreveu
+          modelo: seg ? 'Outro: ' + seg : fd.get('modelo_negocio'),
           time:   fd.get('funcionarios'),
           invest: fd.get('investimento')
         };
