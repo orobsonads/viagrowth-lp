@@ -828,6 +828,13 @@
         var slug    = slugify(empresa);
         if (!slug) { errorEl.textContent = 'Confira o nome da empresa.'; errorEl.style.display = 'block'; return; }
 
+        // a casa não pode ser embaixadora de si mesma
+        if (['viagrowth', 'viamotriz', 'via', 'teste'].indexOf(slug) > -1) {
+          errorEl.textContent = 'Esse nome é reservado. Use o nome da sua empresa.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
         submitBt.setAttribute('disabled', '');
         submitBt.childNodes[0].nodeValue = 'Enviando... ';
 

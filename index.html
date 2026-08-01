@@ -1840,6 +1840,7 @@
               <p class="qf-hp"><label>Não preencha: <input name="site-empresa" tabindex="-1" autocomplete="off" /></label></p>
 
               <input type="hidden" name="origem_indicacao" id="qf-origem" value="" />
+              <input type="hidden" name="origem_captura" id="qf-origem-como" value="" />
               <input type="hidden" name="utm" id="qf-utm" value="" />
               <input type="hidden" name="pagina" id="qf-pagina" value="" />
 
@@ -1908,7 +1909,7 @@
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
             </div>
             <h3>Recebi seus dados.</h3>
-            <p class="qualify-sub">Vou analisar seu cenário e te chamar em até 5 minutos no horário comercial. Se preferir adiantar, me chama agora.</p>
+            <p class="qualify-sub">Vou analisar seu cenário e te chamo em até 5 minutos, no horário comercial. Pode deixar o celular por perto.</p>
             
           </div>
 
@@ -1926,27 +1927,44 @@
     // Lê ?ref= do link do embaixador e carimba a mensagem do WhatsApp,
     // para a origem chegar no CRM sem depender de ninguém lembrar quem indicou.
     (function () {
-      var KEY = 'via_ref', MAX_AGE = 90 * 24 * 60 * 60 * 1000; // 90 dias
+      var KEY = 'via_ref', MAX_AGE = 30 * 24 * 60 * 60 * 1000; // 30 dias
+
+      // a casa não pode ser embaixadora de si mesma
+      var PROIBIDOS = ['viagrowth', 'viamotriz', 'via', 'teste'];
 
       function clean(v) {
-        return (v || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30);
+        v = (v || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30);
+        return PROIBIDOS.indexOf(v) === -1 ? v : '';
       }
 
+      // devolve o ref guardado e há quantos dias ele foi capturado
       function stored() {
         try {
           var raw = JSON.parse(localStorage.getItem(KEY) || 'null');
-          if (raw && raw.v && (Date.now() - raw.t) < MAX_AGE) return raw.v;
+          if (raw && raw.v && (Date.now() - raw.t) < MAX_AGE) {
+            if (clean(raw.v) !== raw.v) { localStorage.removeItem(KEY); return null; }
+            return { v: raw.v, dias: Math.floor((Date.now() - raw.t) / 86400000) };
+          }
+          localStorage.removeItem(KEY);
         } catch (e) {}
-        return '';
+        return null;
       }
 
-      var q   = new URLSearchParams(location.search);
-      var ref = clean(q.get('ref')) || stored();
-      window.VIA_REF = ref || '';
+      var q     = new URLSearchParams(location.search);
+      var naUrl = clean(q.get('ref'));
+      var salvo = naUrl ? null : stored();
+      var ref   = naUrl || (salvo && salvo.v) || '';
+
+      window.VIA_REF = ref;
+      // como a origem foi capturada: o comercial precisa saber se a pessoa
+      // chegou pelo link do embaixador agora ou se só passou por aqui um dia
+      window.VIA_REF_COMO = !ref ? '(nenhuma)'
+        : naUrl ? 'link do embaixador, nesta visita'
+        : 'visita anterior, há ' + salvo.dias + ' dia(s)';
 
       // sobrevive se a pessoa navegar pelo site antes de converter
-      if (ref) {
-        try { localStorage.setItem(KEY, JSON.stringify({ v: ref, t: Date.now() })); } catch (e) {}
+      if (naUrl) {
+        try { localStorage.setItem(KEY, JSON.stringify({ v: naUrl, t: Date.now() })); } catch (e) {}
       }
 
       // contexto da visita, disponível para qualquer tag desde o primeiro hit
@@ -1986,9 +2004,10 @@
       window.dataLayer = window.dataLayer || [];
 
       // contexto que viaja junto com o lead
-      document.getElementById('qf-origem').value = window.VIA_REF || '(nenhuma)';
-      document.getElementById('qf-utm').value    = location.search.replace(/^\?/, '') || '(direto)';
-      document.getElementById('qf-pagina').value = location.pathname;
+      document.getElementById('qf-origem').value      = window.VIA_REF || '(nenhuma)';
+      document.getElementById('qf-origem-como').value = window.VIA_REF_COMO || '(nenhuma)';
+      document.getElementById('qf-utm').value         = location.search.replace(/^\?/, '') || '(direto)';
+      document.getElementById('qf-pagina').value      = location.pathname;
 
       // engajamento: dispara uma vez, no primeiro campo tocado
       var started = false;
@@ -2054,8 +2073,13 @@
             funcionarios: d.time,
             investimento_trafego: d.invest,
             origem_indicacao: window.VIA_REF || '(nenhuma)',
+            origem_captura: window.VIA_REF_COMO || '(nenhuma)',
             lead_qualificado: quente(d.invest, d.time) ? 'sim' : 'nao'
           });
+
+          // uma indicação vale um lead: sem isso o mesmo navegador
+          // carimbaria a origem em todo mundo que preenchesse depois
+          try { localStorage.removeItem('via_ref'); } catch (e) {}
 
           concluir();
         })
