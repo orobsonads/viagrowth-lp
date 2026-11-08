@@ -1,0 +1,433 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { getPosts } from '../lib/posts';
+
+const ultimos = (await getPosts()).slice(0, 3);
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'VIA Growth',
+  url: 'https://viagrowth.com.br/',
+  logo: 'https://viagrowth.com.br/logo-via.png',
+  image: 'https://viagrowth.com.br/og-padrao.png',
+  description: 'Agência de marketing e vendas para lojas de móveis planejados e negócios de venda consultiva: anúncios, atendimento, CRM e processo comercial.',
+  email: 'contato@viagrowth.com.br',
+  address: { '@type': 'PostalAddress', addressLocality: 'Barueri', addressRegion: 'SP', addressCountry: 'BR' },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
+  founder: { '@type': 'Person', name: 'Robson Silva' },
+  sameAs: ['https://www.instagram.com/orobsonads/'],
+};
+---
+<Base
+  titulo="VIA Growth | Marketing e vendas para lojas de planejados e venda consultiva"
+  descricao="Mais agendamentos na semana, mais vendas no fim do mês. A VIA Growth leva o cliente certo até o seu time e acompanha até a venda fechar."
+  ativo="home"
+  jsonld={jsonld}
+>
+  <section class="hero">
+    <div class="wrap">
+      <h1><span class="linha">Mais agendamentos na semana.</span> <span class="linha">Mais <span class="hl">vendas</span> no fim do mês.</span></h1>
+      <p class="lede">A VIA Growth leva o cliente certo até o seu time e acompanha até a venda fechar. Anúncio, atendimento e processo comercial girando na mesma máquina.</p>
+      <div class="hero-actions">
+        <a href="#form" class="btn" data-cta="hero">Pedir diagnóstico gratuito</a>
+        <a href="#como-trabalhamos" class="btn btn-ghost">Como trabalhamos</a>
+      </div>
+      <p class="hero-note">O diagnóstico é gratuito. Respondemos em até 5 minutos no horário comercial.</p>
+      <p class="prova">Somando as contas que a VIA Growth gerencia: mais de <strong>32 mil contatos</strong> gerados, <strong>R$ 18 milhões</strong> em vendas e <strong>25 milhões de pessoas</strong> alcançadas.</p>
+    </div>
+  </section>
+
+  <section class="secao secao-alt" id="para-quem">
+    <div class="wrap duas-colunas">
+      <div>
+        <h2>Pra quem a gente trabalha</h2>
+        <p class="lede">Lojas de móveis planejados, clínicas e outros negócios em que o cliente pesquisa, conversa, visita e só depois fecha. Venda que depende de atendimento, não só de clique.</p>
+      </div>
+      <div class="sinais">
+        <h3>Normalmente a gente entra quando:</h3>
+        <ul>
+          <li>O anúncio traz contato, mas pouca gente vira visita ou orçamento.</li>
+          <li>Cada vendedor atende de um jeito e ninguém sabe de onde veio a venda.</li>
+          <li>O mês bom depende de indicação, e quando ela some o caixa sente.</li>
+          <li>O cliente pega o orçamento e ninguém liga de volta.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="como-trabalhamos">
+    <div class="wrap">
+      <div class="secao-head">
+        <h2>Como a gente trabalha</h2>
+        <p class="lede">A Metodologia V.I.A cuida das três partes da venda ao mesmo tempo. Anúncio sozinho não fecha contrato: o que acontece depois do clique pesa tanto quanto ele.</p>
+      </div>
+      <div class="via">
+        <div class="via-etapa">
+          <div class="via-letra" aria-hidden="true">V</div>
+          <h3>Visibilidade</h3>
+          <p>Seu negócio na frente de quem está procurando.</p>
+          <ul>
+            <li>Anúncios no Instagram, no Facebook e no Google pra quem tem interesse de verdade</li>
+            <li>Perfil da empresa no Google arrumado pra aparecer nas buscas da sua região</li>
+            <li>Mensagem e visual que passam confiança antes do primeiro contato</li>
+            <li>Conteúdo que atrai o cliente certo</li>
+          </ul>
+        </div>
+        <div class="via-etapa">
+          <div class="via-letra" aria-hidden="true">I</div>
+          <h3>Inteligência comercial</h3>
+          <p>Nenhum cliente esquecido no caminho.</p>
+          <ul>
+            <li>CRM: cada cliente registrado, com a etapa da compra e o próximo passo</li>
+            <li>Roteiros de atendimento pro seu time conduzir a conversa no WhatsApp</li>
+            <li>Retorno organizado pra quem pediu orçamento e ainda está decidindo</li>
+            <li>Leitura de quem compra mais, pra buscar mais gente parecida</li>
+          </ul>
+        </div>
+        <div class="via-etapa">
+          <div class="via-letra" aria-hidden="true">A</div>
+          <h3>Aquisição</h3>
+          <p>Mais venda, com previsibilidade.</p>
+          <ul>
+            <li>Anúncios ajustados pelo que o seu time realmente vendeu</li>
+            <li>Relatório toda segunda-feira com contatos, agendamentos e vendas da semana</li>
+            <li>Reunião todo mês pra olhar o resultado e decidir os próximos passos</li>
+            <li>Quanto você investiu e quanto voltou em venda, sem número de vaidade</li>
+          </ul>
+        </div>
+      </div>
+      <div class="via-fecho">
+        <p>Quer ver isso aplicado no seu negócio?</p>
+        <a href="#form" class="btn" data-cta="metodo">Pedir diagnóstico gratuito</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao secao-alt" id="quem-somos">
+    <div class="wrap quem">
+      <figure>
+        <img src="/robson.jpg" alt="Robson Silva, fundador da VIA Growth" width="900" height="900" loading="lazy" decoding="async" />
+        <figcaption>Robson Silva, fundador da VIA Growth</figcaption>
+      </figure>
+      <div class="quem-texto">
+        <h2>Quem está por trás</h2>
+        <p>Sou o Robson Silva. Trabalhei como gestor de performance em grandes grupos, cuidando da captação de clientes em escala. Hoje uso essa experiência com negócios que querem crescer com constância.</p>
+        <p>A VIA Growth nasceu de uma coisa que eu via o tempo todo: negócio bom perdendo cliente pra concorrente menor só porque não aparecia onde o cliente procurava, ou porque não sabia conduzir quem chegava.</p>
+        <p class="destaque">Aqui você fala direto com quem cuida da sua conta.</p>
+      </div>
+    </div>
+  </section>
+
+  {ultimos.length > 0 && (
+    <section class="secao" id="blog">
+      <div class="wrap">
+        <div class="secao-head">
+          <h2>Do blog</h2>
+          <p class="lede">Marketing e vendas explicados pra quem toca o negócio. Dica nova todo dia útil.</p>
+        </div>
+        <div class="posts home-posts">
+          {ultimos.map((p) => <PostCard post={p} nivel="h3" />)}
+        </div>
+        <p class="mais"><a class="link" href="/blog/">Ver todos os posts</a></p>
+      </div>
+    </section>
+  )}
+
+  <section class="secao secao-alt" id="perguntas">
+    <div class="wrap">
+      <div class="secao-head"><h2>Perguntas frequentes</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Vocês atendem qualquer tipo de negócio?</summary>
+          <p>A maior parte dos nossos clientes são lojas de móveis planejados, mas também atendemos clínicas, serviços e outros negócios em que a venda depende de atendimento. O que importa é o valor da venda justificar o investimento em anúncio e o negócio estar disposto a trabalhar o processo comercial com a gente.</p>
+        </details>
+        <details>
+          <summary>Vocês fazem só os anúncios?</summary>
+          <p>Não. Anúncio sem processo comercial não fecha venda. A gente cuida dos anúncios, orienta o posicionamento, organiza o seu CRM e entrega roteiros pro seu time saber conduzir os clientes que chegam.</p>
+        </details>
+        <details>
+          <summary>Preciso ter presença digital pronta pra começar?</summary>
+          <p>Não. A gente orienta desde o zero: identidade visual, perfis nas redes, página de captação, perfil da empresa no Google e campanhas. Você não precisa ter nada pronto.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo leva pra ver os primeiros resultados?</summary>
+          <p>Uma campanha bem montada começa a trazer contatos nos primeiros dias. Os melhores resultados aparecem a partir do segundo e do terceiro mês, quando já existe dado suficiente pra ajustar público e anúncios com precisão.</p>
+        </details>
+        <details>
+          <summary>Qual é o investimento mínimo em anúncios?</summary>
+          <p>Depende do seu mercado, do valor da sua venda e do seu objetivo. A gente conversa sobre isso no diagnóstico e indica o investimento mínimo pra que o anúncio dê resultado de verdade, sem desperdiçar dinheiro.</p>
+        </details>
+        <details>
+          <summary>Como funciona o primeiro passo?</summary>
+          <p>Você responde as 6 perguntas do formulário aqui embaixo. Eu olho o seu cenário e te chamo em até 5 minutos, no horário comercial, pra uma conversa sem compromisso sobre o seu negócio. Sem pressão e sem discurso de venda.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="form">
+    <div class="wrap contato">
+      <div>
+        <h2>Peça um diagnóstico gratuito</h2>
+        <p class="lede">São 6 perguntas rápidas sobre o seu negócio. Com elas eu chego na conversa já sabendo do que você precisa, em vez de gastar o seu tempo perguntando o básico.</p>
+        <ol class="passos">
+          <li><strong>Você envia o formulário.</strong> Leva menos de um minuto.</li>
+          <li><strong>Eu olho o seu cenário:</strong> como o cliente chega hoje, como é atendido e onde ele se perde.</li>
+          <li><strong>Te chamo em até 5 minutos</strong> no horário comercial, pra uma conversa sem compromisso.</li>
+        </ol>
+      </div>
+
+      <div class="qualify-card">
+        <div class="qualify-form" id="qualify-form-view">
+          <h3>Queremos conhecer seu negócio.</h3>
+          <p class="qualify-sub">Preencha abaixo e eu volto com um diagnóstico do seu cenário.</p>
+          <form id="qualify-form" name="qualificacao" method="POST" data-netlify="true" netlify-honeypot="site-empresa">
+            <input type="hidden" name="form-name" value="qualificacao" />
+            <p class="qf-hp"><label>Não preencha: <input name="site-empresa" tabindex="-1" autocomplete="off" /></label></p>
+            <input type="hidden" name="origem_indicacao" id="qf-origem" value="" />
+            <input type="hidden" name="origem_captura" id="qf-origem-como" value="" />
+            <input type="hidden" name="utm" id="qf-utm" value="" />
+            <input type="hidden" name="pagina" id="qf-pagina" value="" />
+            <div class="qf">
+              <label for="qf-nome">Nome</label>
+              <input type="text" id="qf-nome" name="nome" required placeholder="Digite seu nome" autocomplete="name" />
+            </div>
+            <div class="qf">
+              <label for="qf-email">E-mail</label>
+              <input type="email" id="qf-email" name="email" required placeholder="Digite seu e-mail" autocomplete="email" />
+            </div>
+            <div class="qf">
+              <label for="qf-telefone">Telefone</label>
+              <input type="tel" id="qf-telefone" name="telefone" required placeholder="Seu número de celular" autocomplete="tel" />
+            </div>
+            <div class="qf">
+              <label for="qf-modelo">Qual é o seu modelo de negócio?</label>
+              <select id="qf-modelo" name="modelo_negocio" required>
+                <option value="" disabled selected>Selecione</option>
+                <option>Negócio local (loja física)</option>
+                <option>E-commerce</option>
+                <option>Infoproduto ou lançamento</option>
+                <option>Serviços e consultoria</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="qf" id="qf-outro-wrap" hidden>
+              <label for="qf-outro">Qual é o seu segmento?</label>
+              <input type="text" id="qf-outro" name="segmento" placeholder="Ex: clínica odontológica, barbearia, academia" />
+            </div>
+            <div class="qf">
+              <label for="qf-time">Número de funcionários</label>
+              <select id="qf-time" name="funcionarios" required>
+                <option value="" disabled selected>Selecione</option>
+                <option>Somente eu</option>
+                <option>Entre 2 e 5 funcionários</option>
+                <option>Entre 6 e 10 funcionários</option>
+                <option>Entre 11 e 20 funcionários</option>
+                <option>Acima de 20 funcionários</option>
+              </select>
+            </div>
+            <div class="qf">
+              <label for="qf-invest">Qual é o investimento atual em tráfego pago?</label>
+              <select id="qf-invest" name="investimento" required>
+                <option value="" disabled selected>Selecione</option>
+                <option>Ainda não investimos</option>
+                <option>Até R$ 1.000,00</option>
+                <option>Entre R$ 1.000,01 e R$ 3.000,00</option>
+                <option>Entre R$ 3.000,01 e R$ 5.000,00</option>
+                <option>Acima de R$ 5.000,01</option>
+              </select>
+            </div>
+            <button class="btn-submit" type="submit" id="qf-submit">Enviar</button>
+            <p class="qf-error" id="qf-error"></p>
+            <p class="qf-fine">Seus dados ficam só com a VIA Growth e servem pra preparar o seu diagnóstico. Veja a <a href="/politica-de-privacidade/">Política de Privacidade</a>.</p>
+          </form>
+        </div>
+
+        <div class="qualify-done" id="qualify-done" role="status">
+          <div class="done-seal">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3>Recebi seus dados.</h3>
+          <p class="qualify-sub">Vou analisar seu cenário e te chamo em até 5 minutos, no horário comercial. Pode deixar o celular por perto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // ── Origem de indicação (Programa de Embaixadores) ──
+    // Lê ?ref= do link do embaixador para a origem chegar no CRM
+    // sem depender de ninguém lembrar quem indicou.
+    (function () {
+      var KEY = 'via_ref', MAX_AGE = 30 * 24 * 60 * 60 * 1000; // 30 dias
+
+      // a casa não pode ser embaixadora de si mesma
+      var PROIBIDOS = ['viagrowth', 'viamotriz', 'via', 'teste'];
+
+      function clean(v) {
+        v = (v || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30);
+        return PROIBIDOS.indexOf(v) === -1 ? v : '';
+      }
+
+      // devolve o ref guardado e há quantos dias ele foi capturado
+      function stored() {
+        try {
+          var raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+          if (raw && raw.v && (Date.now() - raw.t) < MAX_AGE) {
+            if (clean(raw.v) !== raw.v) { localStorage.removeItem(KEY); return null; }
+            return { v: raw.v, dias: Math.floor((Date.now() - raw.t) / 86400000) };
+          }
+          localStorage.removeItem(KEY);
+        } catch (e) {}
+        return null;
+      }
+
+      var q     = new URLSearchParams(location.search);
+      var naUrl = clean(q.get('ref'));
+      var salvo = naUrl ? null : stored();
+      var ref   = naUrl || (salvo && salvo.v) || '';
+
+      window.VIA_REF = ref;
+      // como a origem foi capturada: o comercial precisa saber se a pessoa
+      // chegou pelo link do embaixador agora ou se só passou por aqui um dia
+      window.VIA_REF_COMO = !ref ? '(nenhuma)'
+        : naUrl ? 'link do embaixador, nesta visita'
+        : 'visita anterior, há ' + salvo.dias + ' dia(s)';
+
+      // sobrevive se a pessoa navegar pelo site antes de converter
+      if (naUrl) {
+        try { localStorage.setItem(KEY, JSON.stringify({ v: naUrl, t: Date.now() })); } catch (e) {}
+      }
+
+      // contexto da visita, disponível para qualquer tag desde o primeiro hit
+      window.dataLayer.push({
+        event: 'page_data',
+        origem_indicacao: ref || '(nenhuma)',
+        utm_source:   q.get('utm_source')   || '(direto)',
+        utm_medium:   q.get('utm_medium')   || '(nenhum)',
+        utm_campaign: q.get('utm_campaign') || '(nenhuma)',
+        utm_content:  q.get('utm_content')  || '(nenhum)'
+      });
+    })();
+
+    // ── Formulário de qualificação ──────────────────
+    (function () {
+      var form = document.getElementById('qualify-form');
+      if (!form) return;
+
+      var formView = document.getElementById('qualify-form-view');
+      var doneView = document.getElementById('qualify-done');
+      var errorEl  = document.getElementById('qf-error');
+      var submitBt = document.getElementById('qf-submit');
+
+      window.dataLayer = window.dataLayer || [];
+
+      // contexto que viaja junto com o lead
+      document.getElementById('qf-origem').value      = window.VIA_REF || '(nenhuma)';
+      document.getElementById('qf-origem-como').value = window.VIA_REF_COMO || '(nenhuma)';
+      document.getElementById('qf-utm').value         = location.search.replace(/^\?/, '') || '(direto)';
+      document.getElementById('qf-pagina').value      = location.pathname;
+
+      // "Outro" abre o campo livre de segmento, e só ele é obrigatório nesse caso
+      var modelo    = document.getElementById('qf-modelo');
+      var outroWrap = document.getElementById('qf-outro-wrap');
+      var outro     = document.getElementById('qf-outro');
+
+      modelo.addEventListener('change', function () {
+        var eOutro = modelo.value === 'Outro';
+        outroWrap.hidden = !eOutro;
+        if (eOutro) {
+          outro.setAttribute('required', '');
+          outro.focus();
+        } else {
+          outro.removeAttribute('required');
+          outro.value = '';
+        }
+      });
+
+      // engajamento: dispara uma vez, no primeiro campo tocado
+      var started = false;
+      form.addEventListener('focusin', function () {
+        if (started) return;
+        started = true;
+        window.dataLayer.push({ event: 'form_start', form_name: 'qualificacao_via' });
+      });
+
+      // id único do evento, para o GA4 e o Pixel/CAPI não contarem a mesma conversão duas vezes
+      function eventId() {
+        return 'lead-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+      }
+
+      function quente(invest, time) {
+        return invest === 'Entre R$ 3.000,01 e R$ 5.000,00'
+            || invest === 'Acima de R$ 5.000,01'
+            || time === 'Entre 11 e 20 funcionários'
+            || time === 'Acima de 20 funcionários';
+      }
+
+      function concluir() {
+        formView.classList.add('off');
+        doneView.classList.add('on');
+        doneView.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function falhou() {
+        errorEl.textContent = 'Não consegui enviar agora. Confere sua conexão e toca em Enviar de novo.';
+        errorEl.style.display = 'block';
+        submitBt.removeAttribute('disabled');
+        submitBt.textContent = 'Enviar';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+        submitBt.setAttribute('disabled', '');
+        submitBt.textContent = 'Enviando...';
+
+        var fd  = new FormData(form);
+        var seg = (fd.get('segmento') || '').trim();
+        var d   = {
+          nome:   fd.get('nome'),
+          // com "Outro", o que vale para o relatório é o segmento que a pessoa escreveu
+          modelo: seg ? 'Outro: ' + seg : fd.get('modelo_negocio'),
+          time:   fd.get('funcionarios'),
+          invest: fd.get('investimento')
+        };
+
+        fetch(location.pathname, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(fd).toString()
+        })
+        .then(function (r) {
+          if (!r.ok) throw new Error('http');
+
+          // conversão: só dispara depois que o lead foi mesmo registrado
+          window.dataLayer.push({
+            event: 'generate_lead',
+            form_name: 'qualificacao_via',
+            event_id: eventId(),            // deduplicação quando o Pixel/CAPI entrar
+            modelo_negocio: d.modelo,
+            funcionarios: d.time,
+            investimento_trafego: d.invest,
+            origem_indicacao: window.VIA_REF || '(nenhuma)',
+            origem_captura: window.VIA_REF_COMO || '(nenhuma)',
+            lead_qualificado: quente(d.invest, d.time) ? 'sim' : 'nao'
+          });
+
+          // uma indicação vale um lead: sem isso o mesmo navegador
+          // carimbaria a origem em todo mundo que preenchesse depois
+          try { localStorage.removeItem('via_ref'); } catch (e) {}
+
+          concluir();
+        })
+        .catch(function () {
+          window.dataLayer.push({ event: 'form_error', form_name: 'qualificacao_via' });
+          falhou();
+        });
+      });
+    })();
+  </script>
+</Base>

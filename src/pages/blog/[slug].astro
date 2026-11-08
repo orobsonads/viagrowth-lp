@@ -47,12 +47,10 @@ const jsonld = {
 <Base titulo={`${d.titulo} | VIA Growth`} descricao={d.resumo} tipo="article" jsonld={jsonld} ativo="blog" og={ogPost}>
   <article>
     <header class="post-head narrow">
-      <a class="eyebrow" href={`/blog/categoria/${d.categoria}/`}>{nomeCategoria(d.categoria)}</a>
+      <a class="post-cat" href={`/blog/categoria/${d.categoria}/`}>{nomeCategoria(d.categoria)}</a>
       <h1>{d.titulo}</h1>
-      <p class="lead">{d.resumo}</p>
-      <div class="meta">
-        <span>Robson Silva</span> · <time datetime={d.data.toISOString()}>{dataBR(d.data)}</time> · <span>{leitura(post.body)} min de leitura</span>
-      </div>
+      <p class="lede">{d.resumo}</p>
+      <p class="post-meta">Por Robson Silva, em <time datetime={d.data.toISOString()}>{dataBR(d.data)}</time>. Leitura de {leitura(post.body)} min.</p>
     </header>
 
     <figure class="post-capa">
@@ -70,14 +68,14 @@ const jsonld = {
       <aside class="cta-box">
         <h2>Quer ver isso aplicado no seu negócio?</h2>
         <p>Diagnóstico gratuito da sua captação. A gente olha anúncio, atendimento e funil e te mostra onde está o vazamento.</p>
-        <a href="/#form" class="btn btn-lg" data-cta={`post:${post.id}`}>Quero o diagnóstico →</a>
+        <a href="/#form" class="btn" data-cta={`post:${post.id}`}>Pedir diagnóstico gratuito</a>
       </aside>
     </div>
   </article>
 
   {relacionados.length > 0 && (
     <section class="relacionados">
-      <div class="container">
+      <div class="wrap">
         <h2>Leia também</h2>
         <div class="posts">{relacionados.map((p) => <PostCard post={p} nivel="h3" />)}</div>
       </div>

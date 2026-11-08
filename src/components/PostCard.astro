@@ -11,13 +11,13 @@ const H = nivel;
     src={post.data.capa}
     alt=""
     widths={destaque ? [600, 900, 1200] : [400, 700]}
-    sizes={destaque ? '(max-width: 900px) 100vw, 600px' : '(max-width: 900px) 100vw, 380px'}
+    sizes={destaque ? '(max-width: 960px) 100vw, 640px' : '(max-width: 640px) 100vw, 360px'}
     loading={destaque ? 'eager' : 'lazy'}
   />
   <div class="post-body">
-    <span class="meta"><span class="tag-cat">{nomeCategoria(post.data.categoria)}</span></span>
+    <span class="post-cat">{nomeCategoria(post.data.categoria)}</span>
     <H>{post.data.titulo}</H>
     <p>{post.data.resumo}</p>
-    <span class="meta"><time datetime={post.data.data.toISOString()}>{dataBR(post.data.data)}</time> · {leitura(post.body)} min</span>
+    <span class="post-data"><time datetime={post.data.data.toISOString()}>{dataBR(post.data.data)}</time>, {leitura(post.body)} min de leitura</span>
   </div>
 </a>

@@ -13,17 +13,16 @@ const usadas = new Set(posts.map((p) => p.data.categoria));
   descricao="Dicas práticas de marketing e vendas pra loja de móveis planejados e negócio de venda consultiva: atendimento, time comercial, CRM e anúncios, em linguagem simples."
   ativo="blog"
 >
-  <header class="page-head container">
-    <div class="eyebrow">Blog da VIA Growth</div>
-    <h1>Marketing e vendas, <span class="accent">sem complicação.</span></h1>
-    <p>Dicas práticas pra quem toca loja de móveis planejados e negócio de venda consultiva: atendimento, time comercial, CRM e anúncios. Em português de dono de negócio.</p>
-    <nav class="cats" aria-label="Categorias">
+  <header class="blog-head wrap">
+    <h1>Marketing e vendas, sem complicação.</h1>
+    <p class="lede">Dicas práticas pra quem toca loja de móveis planejados e negócio de venda consultiva: atendimento, time comercial, CRM e anúncios. Em português de dono de negócio.</p>
+    <nav class="cats" aria-label="Categorias do blog">
       <a class="cat" href="/blog/" aria-current="page">Tudo</a>
       {Object.entries(CATEGORIAS).filter(([slug]) => usadas.has(slug as keyof typeof CATEGORIAS)).map(([slug, c]) => <a class="cat" href={`/blog/categoria/${slug}/`}>{c.nome}</a>)}
     </nav>
   </header>
 
-  <section class="container">
+  <section class="wrap">
     {posts.length === 0 ? (
       <p class="vazio">Os primeiros posts saem em breve.</p>
     ) : (

@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "24"
 
 # O endereço *.netlify.app do site é uma cópia pública da página.
 # Manda tudo pro domínio oficial, pra não dividir SEO nem sujar medição.

@@ -12,8 +12,8 @@ export async function getPosts(): Promise<Post[]> {
 
 export const nomeCategoria = (c: keyof typeof CATEGORIAS) => CATEGORIAS[c].nome;
 
-const fmt = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'America/Sao_Paulo' });
-export const dataBR = (d: Date) => fmt.format(d).replace('.', '');
+const fmt = new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Sao_Paulo' });
+export const dataBR = (d: Date) => fmt.format(d);
 
 /** Minutos de leitura (~200 palavras/min). */
 export function leitura(body: string | undefined): number {

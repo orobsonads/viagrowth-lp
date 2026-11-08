@@ -6,7 +6,7 @@ interface Props {
   descricao: string;
   tipo?: 'website' | 'article';
   jsonld?: Record<string, unknown> | Record<string, unknown>[];
-  ativo?: 'blog' | 'privacidade';
+  ativo?: 'home' | 'blog' | 'privacidade';
   og?: string; // caminho da imagem de compartilhamento
 }
 const { titulo, descricao, tipo = 'website', jsonld, ativo, og: ogPath = '/og-padrao.png' } = Astro.props;
@@ -14,6 +14,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const og = new URL(ogPath, Astro.site).href;
 // build fora de produção (preview/branch do Netlify) não entra no Google
 const naoIndexar = !!process.env.CONTEXT && process.env.CONTEXT !== 'production';
+// na home os links do menu rolam a página; fora dela, levam pra home
+const h = ativo === 'home' ? '' : '/';
+const ano = new Date().getFullYear();
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -34,42 +37,104 @@ const naoIndexar = !!process.env.CONTEXT && process.env.CONTEXT !== 'production'
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#FBFBFD" />
   <link rel="icon" href="/logo-via.png" />
   <link rel="alternate" type="application/rss+xml" title="Blog da VIA Growth" href="/rss.xml" />
 
-  <!-- Mesma camada de dados da home: o GTM, quando entrar, lê daqui. -->
+  <!-- ═══ CAMADA DE DADOS ═══════════════════════════════════════════
+       Nasce antes de tudo, então nenhum evento se perde por ordem de
+       carregamento. Eventos: page_data (home), cta_click (todas),
+       form_start, generate_lead e form_error (formulário da home).
+       PARA LIGAR O GTM: colar o snippet oficial logo abaixo deste bloco
+       e o <noscript> no início do <body>. Não apagar este bloco.
+  ════════════════════════════════════════════════════════════════ -->
   <script is:inline>window.dataLayer = window.dataLayer || [];</script>
-  <!-- V.I.A Motriz: guarda a origem da visita; se a pessoa virar lead na home, a origem vai junto. -->
+
+  <!-- V.I.A Motriz: guarda a origem da visita (Google, Meta, direto) e
+       manda cópia de todo formulário enviado pro CRM da VIA Growth. -->
   <script is:inline src="https://app.viamotriz.com.br/rastreio.js" async></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   {jsonld && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld)} />}
 </head>
 <body>
-  <nav class="site-nav">
-    <div class="nav-inner">
-      <a href="/" aria-label="VIA Growth, página inicial"><img class="logo-img" src="/logo-via.png" alt="VIA Growth" width="120" height="30" /></a>
-      <div class="nav-links">
-        <a href="/blog/" class="nav-link" aria-current={ativo === 'blog' ? 'page' : undefined}>Blog</a>
-        <a href="/#form" class="btn" data-cta="nav">Falar com a VIA</a>
-      </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="VIA Growth, página inicial"><img src="/logo-via.png" alt="VIA Growth" width="123" height="30" /></a>
+      <nav class="menu" id="menu" aria-label="Menu principal">
+        <a href={`${h}#como-trabalhamos`}>Como trabalhamos</a>
+        <a href={`${h}#quem-somos`}>Quem somos</a>
+        <a href="/blog/" aria-current={ativo === 'blog' ? 'page' : undefined}>Blog</a>
+        <a href={`${h}#perguntas`}>Perguntas</a>
+      </nav>
+      <a class="btn btn-sm header-cta" href={`${h}#form`} data-cta="menu">Pedir diagnóstico</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu"><span aria-hidden="true"></span>Menu</button>
     </div>
-  </nav>
+  </header>
 
   <main><slot /></main>
 
   <footer class="site-footer">
-    <p>© {new Date().getFullYear()} VIA Growth · <a href="/blog/">Blog</a> · <a href="/politica-de-privacidade/">Política de Privacidade</a> · <a href="/rss.xml">RSS</a></p>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <img src="/logo-via.png" alt="VIA Growth" width="115" height="28" loading="lazy" />
+          <p>Marketing e vendas pra quem vende com atendimento: do anúncio até o contrato assinado.</p>
+        </div>
+        <div>
+          <h2>Site</h2>
+          <ul>
+            <li><a href={`${h}#como-trabalhamos`}>Como trabalhamos</a></li>
+            <li><a href={`${h}#quem-somos`}>Quem somos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href={`${h}#perguntas`}>Perguntas frequentes</a></li>
+            <li><a href="/embaixadores/">Programa de Embaixadores</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contato</h2>
+          <ul>
+            <li><a href={`${h}#form`} data-cta="rodape">Pedir diagnóstico gratuito</a></li>
+            <li><a href="mailto:contato@viagrowth.com.br">contato@viagrowth.com.br</a></li>
+            <li><a href="https://www.instagram.com/orobsonads/" rel="noopener" target="_blank">Instagram</a></li>
+            <li>Barueri, SP. Atendemos o Brasil inteiro.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© {ano} VIA Growth. CNPJ 54.450.045/0001-97.</span>
+        <span><a href="/politica-de-privacidade/">Política de Privacidade</a> · <a href="/rss.xml">RSS do blog</a></span>
+      </div>
+    </div>
   </footer>
 
   <script is:inline>
-    // cta_click: mesmo evento da home, com a página de onde a pessoa saiu
+    // menu do celular
+    (function () {
+      var bt = document.querySelector('.menu-toggle'), menu = document.getElementById('menu');
+      if (!bt || !menu) return;
+      function fechar() { menu.classList.remove('aberto'); bt.setAttribute('aria-expanded', 'false'); }
+      bt.addEventListener('click', function () {
+        var abrir = !menu.classList.contains('aberto');
+        menu.classList.toggle('aberto', abrir);
+        bt.setAttribute('aria-expanded', String(abrir));
+      });
+      menu.addEventListener('click', function (e) { if (e.target.closest('a')) fechar(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
+    })();
+
+    // cta_click: todo botão que leva ao formulário, com o texto e o lugar de onde saiu
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('[data-cta]');
       if (!a) return;
-      window.dataLayer.push({ event: 'cta_click', cta_local: a.getAttribute('data-cta'), pagina: location.pathname });
+      window.dataLayer.push({
+        event: 'cta_click',
+        cta_texto: (a.textContent || '').trim().replace(/\s+/g, ' '),
+        cta_local: a.getAttribute('data-cta'),
+        pagina: location.pathname
+      });
     });
   </script>
 </body>

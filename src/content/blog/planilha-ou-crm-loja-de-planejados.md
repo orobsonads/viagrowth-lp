@@ -55,4 +55,4 @@ Comece simples: cadastre todo cliente novo, marque a etapa e o próximo passo. E
 
 > Venda que depende da memória do vendedor é venda que um dia vai ser esquecida.
 
-Na VIA Growth, todo cliente trabalha com CRM ligado aos anúncios e ao WhatsApp. É assim que conseguimos mostrar pro dono não só quantos contatos o anúncio trouxe, mas quantas vendas.
+Na VIA Growth, os nossos clientes trabalham com CRM ligado aos anúncios e ao WhatsApp. É assim que conseguimos mostrar pro dono não só quantos contatos o anúncio trouxe, mas quantas vendas.
