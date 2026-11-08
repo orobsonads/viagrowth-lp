@@ -9,14 +9,14 @@ const [primeiro, ...resto] = posts;
 const usadas = new Set(posts.map((p) => p.data.categoria));
 ---
 <Base
-  titulo="Blog da VIA Growth: dicas de tráfego, vendas e mercado"
-  descricao="Uma dica prática por dia útil sobre anúncios, atendimento e vendas, mais o que mudou no mercado de Meta, Google e IA. Escrito por quem opera conta todo dia."
+  titulo="Blog da VIA Growth: marketing e vendas sem complicação"
+  descricao="Dicas práticas de marketing e vendas pra loja de móveis planejados e negócio de venda consultiva: atendimento, time comercial, CRM e anúncios, em linguagem simples."
   ativo="blog"
 >
   <header class="page-head container">
     <div class="eyebrow">Blog da VIA Growth</div>
-    <h1>O que está funcionando <span class="accent">agora</span> em anúncio e venda.</h1>
-    <p>Uma dica prática por dia útil, o que mudou no mercado e cases com número. Escrito por quem opera conta todo dia, não por quem só lê sobre.</p>
+    <h1>Marketing e vendas, <span class="accent">sem complicação.</span></h1>
+    <p>Dicas práticas pra quem toca loja de móveis planejados e negócio de venda consultiva: atendimento, time comercial, CRM e anúncios. Em português de dono de negócio.</p>
     <nav class="cats" aria-label="Categorias">
       <a class="cat" href="/blog/" aria-current="page">Tudo</a>
       {Object.entries(CATEGORIAS).filter(([slug]) => usadas.has(slug as keyof typeof CATEGORIAS)).map(([slug, c]) => <a class="cat" href={`/blog/categoria/${slug}/`}>{c.nome}</a>)}

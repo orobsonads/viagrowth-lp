@@ -156,6 +156,31 @@ a { color: inherit; }
   .btn { padding: 11px 16px; font-size: .88rem; }
   .btn-lg { padding: 15px 22px; font-size: 1rem; }
 }
+/* ─── IMAGENS DO BLOG ─── */
+.post-card { padding: 0; overflow: hidden; gap: 0; }
+.post-thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--paper-alt); }
+.post-body { display: flex; flex-direction: column; gap: 12px; padding: 24px 26px 26px; flex: 1; }
+.post-card.destaque { flex-direction: row; padding: 0; }
+.post-card.destaque .post-thumb { width: 55%; aspect-ratio: auto; min-height: 340px; }
+.post-card.destaque .post-body { padding: 40px; justify-content: center; }
+.post-capa { max-width: 1000px; margin: 0 auto 48px; padding: 0 24px; }
+.post-capa img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 20px; }
+.post-capa figcaption, .prose figcaption { font-size: .8rem; color: var(--gray-soft); margin-top: 10px; text-align: center; }
+.post-capa figcaption a { color: inherit; }
+.prose figure { margin: 2em 0; }
+.ilustra { background: #fff; border: 1px solid var(--border-soft); border-radius: 18px; padding: 24px 20px; }
+.ilustra svg { width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; }
+@media (max-width: 900px) {
+  .post-card.destaque { flex-direction: column; }
+  .post-card.destaque .post-thumb { width: 100%; min-height: 0; aspect-ratio: 16 / 9; }
+  .post-card.destaque .post-body { padding: 24px 26px 26px; }
+}
+@media (max-width: 480px) {
+  .post-capa { padding: 0 16px; margin-bottom: 32px; }
+  .post-capa img { border-radius: 14px; }
+  .ilustra { padding: 16px 10px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }

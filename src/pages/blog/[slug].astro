@@ -1,5 +1,7 @@
 ---
 import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import fs from 'node:fs';
 import Base from '../../layouts/Base.astro';
 import PostCard from '../../components/PostCard.astro';
 import { type Post, getPosts, dataBR, leitura, nomeCategoria } from '../../lib/posts';
@@ -23,6 +25,8 @@ const { post, relacionados } = Astro.props as { post: Post; relacionados: Post[]
 const { Content } = await render(post);
 const d = post.data;
 const url = new URL(Astro.url.pathname, Astro.site).href;
+// imagem de compartilhamento do post (gerada por scripts/gerar_og.py); sem ela, usa a padrão
+const ogPost = fs.existsSync(`public/og/${post.id}.png`) ? `/og/${post.id}.png` : '/og-padrao.png';
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -33,14 +37,14 @@ const jsonld = {
   dateModified: (d.atualizado ?? d.data).toISOString(),
   inLanguage: 'pt-BR',
   mainEntityOfPage: url,
-  image: new URL('/og-padrao.png', Astro.site).href,
+  image: new URL(ogPost, Astro.site).href,
   articleSection: nomeCategoria(d.categoria),
   keywords: d.tags.join(', '),
   author: { '@type': 'Person', name: 'Robson Silva', jobTitle: 'Fundador da VIA Growth', url: 'https://viagrowth.com.br/' },
   publisher: { '@type': 'Organization', name: 'VIA Growth', url: 'https://viagrowth.com.br/', logo: { '@type': 'ImageObject', url: new URL('/logo-via.png', Astro.site).href } },
 };
 ---
-<Base titulo={`${d.titulo} | VIA Growth`} descricao={d.resumo} tipo="article" jsonld={jsonld} ativo="blog">
+<Base titulo={`${d.titulo} | VIA Growth`} descricao={d.resumo} tipo="article" jsonld={jsonld} ativo="blog" og={ogPost}>
   <article>
     <header class="post-head narrow">
       <a class="eyebrow" href={`/blog/categoria/${d.categoria}/`}>{nomeCategoria(d.categoria)}</a>
@@ -50,6 +54,11 @@ const jsonld = {
         <span>Robson Silva</span> · <time datetime={d.data.toISOString()}>{dataBR(d.data)}</time> · <span>{leitura(post.body)} min de leitura</span>
       </div>
     </header>
+
+    <figure class="post-capa">
+      <Image src={d.capa} alt={d.capaAlt} widths={[640, 1000, 1400]} sizes="(max-width: 1000px) 100vw, 1000px" loading="eager" fetchpriority="high" />
+      {d.capaCredito && <figcaption>Foto: <a href={d.capaCredito.url} rel="nofollow noopener" target="_blank">{d.capaCredito.autor} / Pexels</a></figcaption>}
+    </figure>
 
     <div class="prose narrow"><Content /></div>
 
