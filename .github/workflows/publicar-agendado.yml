@@ -1,0 +1,45 @@
+# Publica o post do dia.
+#
+# Os posts aprovados entram no repositório com a data futura (campo
+# `data:` do .md) e o site só mostra post cuja data já passou. Toda
+# manhã de dia útil este agendador olha se existe post com a data de
+# hoje; se existir, grava a data em `.publicado-em` e faz um commit.
+# Qualquer commit na main faz o Netlify reconstruir o site, e aí o post
+# aparece. Sem chave nem segredo: usa o token que o próprio GitHub dá.
+name: Publicar post agendado
+
+on:
+  schedule:
+    - cron: '0 10 * * 1-5' # 07:00 em Brasília, segunda a sexta
+  workflow_dispatch: {}     # botão "Run workflow" pra disparar na mão
+
+permissions:
+  contents: write
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tem post com a data de hoje?
+        id: hoje
+        run: |
+          HOJE=$(TZ=America/Sao_Paulo date +%F)
+          echo "hoje=$HOJE" >> "$GITHUB_OUTPUT"
+          if grep -q "^data: ${HOJE}" src/content/blog/*.md; then
+            echo "tem=1" >> "$GITHUB_OUTPUT"
+            echo "Post de $HOJE encontrado."
+          else
+            echo "Nenhum post com a data $HOJE."
+          fi
+
+      - name: Pedir a publicação
+        if: steps.hoje.outputs.tem == '1'
+        run: |
+          echo "${{ steps.hoje.outputs.hoje }}" > .publicado-em
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .publicado-em
+          git commit -m "Publicar o post agendado de ${{ steps.hoje.outputs.hoje }}"
+          git push

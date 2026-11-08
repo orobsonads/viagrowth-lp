@@ -3,10 +3,14 @@ import { CATEGORIAS } from '../content.config';
 
 export type Post = CollectionEntry<'blog'>;
 
+// Prévia local dos posts agendados: MOSTRAR_AGENDADOS=1 npm run build && npx astro preview
+// (nunca ligar no Netlify; lá o post só aparece quando a data chega)
+const mostrarAgendados = process.env.MOSTRAR_AGENDADOS === '1';
+
 /** Posts publicados, mais novo primeiro. Rascunho e post com data futura ficam de fora. */
 export async function getPosts(): Promise<Post[]> {
   const agora = Date.now();
-  const todos = await getCollection('blog', ({ data }) => !data.rascunho && data.data.getTime() <= agora);
+  const todos = await getCollection('blog', ({ data }) => !data.rascunho && (mostrarAgendados || data.data.getTime() <= agora));
   return todos.sort((a, b) => b.data.data.getTime() - a.data.data.getTime());
 }
 

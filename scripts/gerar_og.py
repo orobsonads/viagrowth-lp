@@ -38,7 +38,7 @@ def frontmatter(md: Path) -> dict:
     dados = {}
     for chave in ("titulo", "capa", "categoria"):
         m = re.search(rf'^{chave}:\s*"?(.*?)"?\s*$', bloco, re.M)
-        dados[chave] = m.group(1) if m else ""
+        dados[chave] = m.group(1).replace('\\"', '"') if m else ""
     return dados
 
 
