@@ -1,0 +1,12 @@
+---
+import { type Post, dataBR, leitura, nomeCategoria, urlPost } from '../lib/posts';
+interface Props { post: Post; destaque?: boolean; nivel?: 'h2' | 'h3' }
+const { post, destaque = false, nivel = 'h2' } = Astro.props;
+const H = nivel;
+---
+<a class:list={['post-card', { destaque }]} href={urlPost(post)}>
+  <span class="meta"><span class="tag-cat">{nomeCategoria(post.data.categoria)}</span></span>
+  <H>{post.data.titulo}</H>
+  <p>{post.data.resumo}</p>
+  <span class="meta"><time datetime={post.data.data.toISOString()}>{dataBR(post.data.data)}</time> · {leitura(post.body)} min</span>
+</a>

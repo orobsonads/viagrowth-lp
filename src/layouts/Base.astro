@@ -1,0 +1,73 @@
+---
+import '../styles/site.css';
+
+interface Props {
+  titulo: string;
+  descricao: string;
+  tipo?: 'website' | 'article';
+  jsonld?: Record<string, unknown> | Record<string, unknown>[];
+  ativo?: 'blog' | 'privacidade';
+}
+const { titulo, descricao, tipo = 'website', jsonld, ativo } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const og = new URL('/og-padrao.png', Astro.site).href;
+// build fora de produção (preview/branch do Netlify) não entra no Google
+const naoIndexar = !!process.env.CONTEXT && process.env.CONTEXT !== 'production';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{titulo}</title>
+  <meta name="description" content={descricao} />
+  <link rel="canonical" href={canonical} />
+  {naoIndexar && <meta name="robots" content="noindex, nofollow" />}
+  <meta property="og:type" content={tipo} />
+  <meta property="og:site_name" content="VIA Growth" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content={titulo} />
+  <meta property="og:description" content={descricao} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/logo-via.png" />
+  <link rel="alternate" type="application/rss+xml" title="Blog da VIA Growth" href="/rss.xml" />
+
+  <!-- Mesma camada de dados da home: o GTM, quando entrar, lê daqui. -->
+  <script is:inline>window.dataLayer = window.dataLayer || [];</script>
+  <!-- V.I.A Motriz: guarda a origem da visita; se a pessoa virar lead na home, a origem vai junto. -->
+  <script is:inline src="https://app.viamotriz.com.br/rastreio.js" async></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  {jsonld && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld)} />}
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/" aria-label="VIA Growth, página inicial"><img class="logo-img" src="/logo-via.png" alt="VIA Growth" width="120" height="30" /></a>
+      <div class="nav-links">
+        <a href="/blog/" class="nav-link" aria-current={ativo === 'blog' ? 'page' : undefined}>Blog</a>
+        <a href="/#form" class="btn" data-cta="nav">Falar com a VIA</a>
+      </div>
+    </div>
+  </nav>
+
+  <main><slot /></main>
+
+  <footer class="site-footer">
+    <p>© {new Date().getFullYear()} VIA Growth · <a href="/blog/">Blog</a> · <a href="/politica-de-privacidade/">Política de Privacidade</a> · <a href="/rss.xml">RSS</a></p>
+  </footer>
+
+  <script is:inline>
+    // cta_click: mesmo evento da home, com a página de onde a pessoa saiu
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('[data-cta]');
+      if (!a) return;
+      window.dataLayer.push({ event: 'cta_click', cta_local: a.getAttribute('data-cta'), pagina: location.pathname });
+    });
+  </script>
+</body>
+</html>

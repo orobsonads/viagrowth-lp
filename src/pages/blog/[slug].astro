@@ -1,0 +1,77 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { type Post, getPosts, dataBR, leitura, nomeCategoria } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      // relacionados: mesma categoria primeiro, depois os mais novos
+      relacionados: [
+        ...posts.filter((p) => p.id !== post.id && p.data.categoria === post.data.categoria),
+        ...posts.filter((p) => p.id !== post.id && p.data.categoria !== post.data.categoria),
+      ].slice(0, 3),
+    },
+  }));
+}
+
+const { post, relacionados } = Astro.props as { post: Post; relacionados: Post[] };
+const { Content } = await render(post);
+const d = post.data;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.titulo,
+  description: d.resumo,
+  datePublished: d.data.toISOString(),
+  dateModified: (d.atualizado ?? d.data).toISOString(),
+  inLanguage: 'pt-BR',
+  mainEntityOfPage: url,
+  image: new URL('/og-padrao.png', Astro.site).href,
+  articleSection: nomeCategoria(d.categoria),
+  keywords: d.tags.join(', '),
+  author: { '@type': 'Person', name: 'Robson Silva', jobTitle: 'Fundador da VIA Growth', url: 'https://viagrowth.com.br/' },
+  publisher: { '@type': 'Organization', name: 'VIA Growth', url: 'https://viagrowth.com.br/', logo: { '@type': 'ImageObject', url: new URL('/logo-via.png', Astro.site).href } },
+};
+---
+<Base titulo={`${d.titulo} | VIA Growth`} descricao={d.resumo} tipo="article" jsonld={jsonld} ativo="blog">
+  <article>
+    <header class="post-head narrow">
+      <a class="eyebrow" href={`/blog/categoria/${d.categoria}/`}>{nomeCategoria(d.categoria)}</a>
+      <h1>{d.titulo}</h1>
+      <p class="lead">{d.resumo}</p>
+      <div class="meta">
+        <span>Robson Silva</span> · <time datetime={d.data.toISOString()}>{dataBR(d.data)}</time> · <span>{leitura(post.body)} min de leitura</span>
+      </div>
+    </header>
+
+    <div class="prose narrow"><Content /></div>
+
+    <div class="narrow">
+      <div class="autor">
+        <img src="/robson.webp" alt="" width="56" height="56" loading="lazy" />
+        <div><strong>Robson Silva</strong><span>Fundador da VIA Growth. Opera tráfego e processo comercial de negócios de venda consultiva todo dia.</span></div>
+      </div>
+      <aside class="cta-box">
+        <h2>Quer ver isso aplicado no seu negócio?</h2>
+        <p>Diagnóstico gratuito da sua captação. A gente olha anúncio, atendimento e funil e te mostra onde está o vazamento.</p>
+        <a href="/#form" class="btn btn-lg" data-cta={`post:${post.id}`}>Quero o diagnóstico →</a>
+      </aside>
+    </div>
+  </article>
+
+  {relacionados.length > 0 && (
+    <section class="relacionados">
+      <div class="container">
+        <h2>Leia também</h2>
+        <div class="posts">{relacionados.map((p) => <PostCard post={p} nivel="h3" />)}</div>
+      </div>
+    </section>
+  )}
+</Base>

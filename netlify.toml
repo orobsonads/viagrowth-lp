@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# O endereço *.netlify.app do site é uma cópia pública da página.
+# Manda tudo pro domínio oficial, pra não dividir SEO nem sujar medição.
+[[redirects]]
+  from = "https://luminous-narwhal-857c34.netlify.app/*"
+  to = "https://viagrowth.com.br/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

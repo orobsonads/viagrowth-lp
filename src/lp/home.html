@@ -1372,14 +1372,31 @@
       }
       .reveal-init { opacity: 1; transform: none; }
     }
+
+    /* ─── BLOG NA HOME (gerado no build) ───────────── */
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-link { color: var(--ink); text-decoration: none; font-size: .95rem; font-weight: 500; }
+    .nav-link:hover { color: var(--accent); }
+    .home-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+    .home-post { display: flex; flex-direction: column; gap: 12px; padding: 28px; background: #fff; border: 1px solid var(--border-soft); border-radius: 20px; text-decoration: none; color: var(--ink); transition: transform .2s ease, border-color .2s ease; }
+    .home-post:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .home-post-cat { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+    .home-post h3 { font-size: 1.2rem; }
+    .home-post p { color: var(--gray); font-size: .95rem; }
+    .home-blog-more { text-align: center; margin-top: 36px; }
+    @media (max-width: 900px) { .home-blog-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .nav-links { gap: 14px; } }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="nav-inner">
-      <a class="logo" href="#" aria-label="VIA Growth"><img class="logo-img" src="logo-via.png" alt="VIA Growth"></a>
-      <a href="#form" class="btn btn-accent">Falar com a VIA</a>
+      <a class="logo" href="/" aria-label="VIA Growth"><img class="logo-img" src="/logo-via.png" alt="VIA Growth"></a>
+      <div class="nav-links">
+        <a href="/blog/" class="nav-link">Blog</a>
+        <a href="#form" class="btn btn-accent">Falar com a VIA</a>
+      </div>
     </div>
   </nav>
 
@@ -1716,7 +1733,7 @@
           </div>
         </div>
         <div class="bio-image-wrap">
-          <img src="robson.jpg.jpg" alt="Robson Silva, fundador da VIA Growth" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <img src="/robson.jpg" width="900" height="900" alt="Robson Silva, fundador da VIA Growth" loading="lazy" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="bio-image-placeholder" style="display:none;">
             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin: 0 auto 12px;">
               <circle cx="32" cy="24" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -1822,6 +1839,8 @@
   </section>
 
   <!-- CTA FINAL + FORM -->
+<!--ULTIMOS_POSTS-->
+
   <section class="cta-section" id="form">
     <div class="container">
       <div class="cta-inner">
@@ -1932,7 +1951,7 @@
   </section>
 
   <footer>
-    <p>© 2026 VIA Growth · Todos os direitos reservados · <a href="#">Política de Privacidade</a></p>
+    <p>© 2026 VIA Growth · Todos os direitos reservados · <a href="/blog/">Blog</a> · <a href="/politica-de-privacidade/">Política de Privacidade</a></p>
   </footer>
 
   <script>

@@ -1,0 +1,161 @@
+/* Mesmo sistema visual da home (src/lp/home.html). Mudou cor lá, muda aqui. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper: #FBFBFD;
+  --paper-alt: #F5F5F7;
+  --ink: #1D1D1F;
+  --gray: #6E6E73;
+  --gray-soft: #86868B;
+  --border: #D2D2D7;
+  --border-soft: #E8E8ED;
+  --accent: #008096;
+  --accent-soft: #E6F2F4;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.narrow { max-width: 720px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+.accent { color: var(--accent); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 20px; text-decoration: none;
+}
+.eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+/* ─── NAV ─── */
+.site-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(251, 251, 253, .82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.logo-img { height: 30px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-link { text-decoration: none; font-size: .95rem; font-weight: 500; }
+.nav-link:hover, .nav-link[aria-current='page'] { color: var(--accent); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: var(--accent); color: #fff; font: 500 .95rem/1 'Inter', sans-serif;
+  padding: 13px 22px; border-radius: 980px; text-decoration: none; border: 0; cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.btn:hover { background: var(--ink); transform: translateY(-1px); }
+.btn-lg { font-size: 1.05rem; padding: 16px 30px; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* ─── CABEÇALHO DE PÁGINA ─── */
+.page-head { padding: 96px 0 48px; text-align: center; }
+.page-head h1 { font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.04; text-wrap: balance; }
+.page-head p { color: var(--gray); font-size: clamp(1.05rem, 1.6vw, 1.25rem); max-width: 620px; margin: 20px auto 0; text-wrap: pretty; }
+
+/* ─── FILTRO DE CATEGORIA ─── */
+.cats { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+.cat {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: 9px 16px; border: 1px solid var(--border); border-radius: 980px; text-decoration: none; color: var(--gray);
+}
+.cat:hover { border-color: var(--accent); color: var(--accent); }
+.cat[aria-current='page'] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* ─── LISTA DE POSTS ─── */
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 120px; }
+.post-card {
+  display: flex; flex-direction: column; gap: 12px; padding: 28px;
+  background: #fff; border: 1px solid var(--border-soft); border-radius: 20px;
+  text-decoration: none; transition: transform .2s ease, border-color .2s ease;
+}
+.post-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.post-card.destaque { grid-column: 1 / -1; padding: 44px; }
+.post-card.destaque h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+.post-card h2 { font-size: 1.22rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; text-wrap: balance; }
+.post-card p { color: var(--gray); font-size: .96rem; }
+.meta { display: flex; gap: 10px; align-items: center; font-family: var(--mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-soft); }
+.meta .tag-cat { color: var(--accent); }
+.post-card .meta:last-child { margin-top: auto; padding-top: 8px; }
+.vazio { text-align: center; color: var(--gray); padding: 40px 0 120px; }
+
+/* ─── POST ─── */
+.post-head { padding: 80px 0 40px; }
+.post-head h1 { font-size: clamp(2.1rem, 4.6vw, 3.3rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.06; text-wrap: balance; margin: 4px 0 20px; }
+.post-head .lead { font-size: clamp(1.1rem, 1.7vw, 1.3rem); color: var(--gray); text-wrap: pretty; }
+.post-head .meta { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border-soft); flex-wrap: wrap; }
+
+.prose { font-size: 1.1rem; line-height: 1.75; color: #2a2a2d; padding-bottom: 32px; }
+.prose > * + * { margin-top: 1.15em; }
+.prose h2 { font-size: 1.65rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.2; margin-top: 2em; color: var(--ink); }
+.prose h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; margin-top: 1.6em; color: var(--ink); }
+.prose a { color: var(--accent); text-underline-offset: 3px; }
+.prose strong { color: var(--ink); font-weight: 650; }
+.prose ul, .prose ol { padding-left: 1.3em; }
+.prose li + li { margin-top: .45em; }
+.prose li::marker { color: var(--accent); }
+.prose blockquote { border-left: 3px solid var(--accent); padding: 4px 0 4px 20px; color: var(--ink); font-weight: 500; }
+.prose code { font-family: var(--mono); font-size: .88em; background: var(--paper-alt); padding: 2px 6px; border-radius: 6px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: .96rem; display: block; overflow-x: auto; }
+.prose th, .prose td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-soft); white-space: nowrap; }
+.prose th { font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); }
+.prose hr { border: 0; border-top: 1px solid var(--border-soft); margin: 2.4em 0; }
+
+.cta-box { margin: 24px 0 64px; padding: 40px 36px; border-radius: 24px; background: var(--ink); color: #fff; text-align: center; }
+.cta-box h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.15; text-wrap: balance; }
+.cta-box p { color: #b9b9be; margin: 12px auto 26px; max-width: 460px; }
+.cta-box .btn:hover { background: #fff; color: var(--ink); }
+
+.autor { display: flex; gap: 16px; align-items: center; padding: 24px 0; border-top: 1px solid var(--border-soft); }
+.autor img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.autor strong { display: block; }
+.autor span { color: var(--gray); font-size: .92rem; }
+
+.relacionados { background: var(--paper-alt); padding: 80px 0 100px; }
+.relacionados h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -.03em; margin-bottom: 28px; }
+.relacionados .posts { padding-bottom: 0; }
+
+/* ─── PÁGINA DE TEXTO (privacidade) ─── */
+.doc { padding-bottom: 100px; }
+
+/* ─── RODAPÉ ─── */
+.site-footer { border-top: 1px solid var(--border-soft); padding: 48px 24px; text-align: center; color: var(--gray-soft); font-size: .88rem; }
+.site-footer a { color: var(--gray); text-underline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .posts { grid-template-columns: 1fr; }
+  .post-card.destaque { padding: 28px; }
+}
+@media (max-width: 768px) {
+  .container, .nav-inner { padding: 0 22px; }
+  .page-head { padding: 64px 0 32px; }
+  .post-head { padding: 52px 0 28px; }
+  .prose { font-size: 1.04rem; }
+  .cta-box { padding: 32px 22px; }
+}
+@media (max-width: 480px) {
+  .container, .nav-inner { padding: 0 16px; }
+  .narrow { padding-left: 16px; padding-right: 16px; }
+  .logo-img { height: 22px; }
+  .nav-links { gap: 14px; }
+  .btn { padding: 11px 16px; font-size: .88rem; }
+  .btn-lg { padding: 15px 22px; font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

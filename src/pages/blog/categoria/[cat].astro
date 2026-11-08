@@ -1,0 +1,37 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { getPosts } from '../../../lib/posts';
+import { CATEGORIAS } from '../../../content.config';
+
+// categoria sem post não gera página (nada de página vazia no Google)
+export async function getStaticPaths() {
+  const usadas = new Set((await getPosts()).map((p) => p.data.categoria));
+  return Object.keys(CATEGORIAS).filter((c) => usadas.has(c as keyof typeof CATEGORIAS)).map((cat) => ({ params: { cat } }));
+}
+const usadas = new Set((await getPosts()).map((p) => p.data.categoria));
+const cat = Astro.params.cat as keyof typeof CATEGORIAS;
+const info = CATEGORIAS[cat];
+const posts = (await getPosts()).filter((p) => p.data.categoria === cat);
+---
+<Base titulo={`${info.nome} | Blog da VIA Growth`} descricao={info.desc} ativo="blog">
+  <header class="page-head container">
+    <a class="eyebrow" href="/blog/">Blog da VIA Growth</a>
+    <h1>{info.nome}</h1>
+    <p>{info.desc}</p>
+    <nav class="cats" aria-label="Categorias">
+      <a class="cat" href="/blog/">Tudo</a>
+      {Object.entries(CATEGORIAS).filter(([slug]) => usadas.has(slug as keyof typeof CATEGORIAS)).map(([slug, c]) => (
+        <a class="cat" href={`/blog/categoria/${slug}/`} aria-current={slug === cat ? 'page' : undefined}>{c.nome}</a>
+      ))}
+    </nav>
+  </header>
+
+  <section class="container">
+    {posts.length === 0 ? (
+      <p class="vazio">Ainda não tem post aqui. O primeiro sai em breve.</p>
+    ) : (
+      <div class="posts">{posts.map((p) => <PostCard post={p} />)}</div>
+    )}
+  </section>
+</Base>
